@@ -9,7 +9,6 @@ import backgroundImage from "../assets/wallpaper3.jpg";
 import uiImage from "../assets/ui-design.jpg";
 import gymImage from "../assets/gym.jpg.avif";
 import agGridImage from "../assets/ag-grid.jpg";
-// import "../styles/Home-Page.css";
 import styled, { keyframes } from "styled-components";
 
 function Home() {
