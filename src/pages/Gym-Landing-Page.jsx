@@ -5,38 +5,34 @@ import Wave from "../components/homePage/Wave.jsx";
 import { Link } from "react-router-dom";
 import wallpaperImage from "../assets/wallpaper2.jpg";
 import logoImage from "../assets/logo-react.png";
-import backgroundImage from "../assets/wallpaper3.jpg";
 import uiImage from "../assets/ui-design.jpg";
-import gymImage from "../assets/gym.jpg.avif";
+import gymImage from "../assets/gym-background-blur.png";
 import agGridImage from "../assets/ag-grid.jpg";
 // import "../styles/Home-Page.css";
 import styled, { keyframes } from "styled-components";
 
-function Home() {
+function GymLandingPage() {
   return (
     <div>
       <Hero>
         <HeroGroup>
-          <h1>Weblab UI Playground</h1>
+          <h1>Gym Genie</h1>
           <p>This site is Jose's UI playground for weblab</p>
-          <h2>Sections</h2>
-          <Link to="ui">UI Components</Link>
-          <Link to="gym">Gym Landing Page</Link>
-          <Link to="other">Other</Link>
+          <Link to="/">Sign Up</Link>
           <Wave />
         </HeroGroup>
       </Hero>
 
       <Cards>
-        <h2>3 projects, more coming</h2>
+        <h2>Packed with features</h2>
         <CardGroup>
           <Link to="ui">
-            <Card title="UI" text="Not started yet" image={uiImage} />
+            <Card title="Dashboard" text="Not started yet" image={uiImage} />
           </Link>
           <Link to="gym">
-            <Card title="Gym" text="In progress" image={gymImage} />
+            <Card title="Lifting" text="In progress" image={gymImage} />
           </Link>
-          <Link to="other">
+          <Link to="Nutrition">
             <Card title="Other" text="Not started yet" image={agGridImage} />
           </Link>
         </CardGroup>
@@ -52,7 +48,7 @@ function Home() {
   );
 }
 
-export default Home;
+export default GymLandingPage;
 
 const HeroAnimation = keyframes`
   0% {
@@ -77,7 +73,7 @@ const FadeIn = keyframes`
 `;
 
 const Hero = styled.section`
-  background: url(${backgroundImage});
+  background: url(${gymImage});
   height: 920px;
   background-size: cover;
   background-position: center;

@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home-Page";
 import Header from "./components/header";
+import Home from "./pages/Home-Page";
+import GymLandingPage from "./pages/Gym-Landing-Page";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/gymLandingPage" element={<GymLandingPage />} />
       </Routes>
     </div>
   );

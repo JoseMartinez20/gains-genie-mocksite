@@ -35,8 +35,8 @@ class Header extends React.Component {
           <Link to="/">
             <img src={logo} width="30" />
           </Link>
+          <Link to="gymLandingPage">Gym Landing Page</Link>
           <Link to="ui">UI Components</Link>
-          <Link to="gym">Gym Landing Page</Link>
           <Link to="other">AG Grid Project</Link>
         </div>
       </div>
