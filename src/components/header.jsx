@@ -37,7 +37,7 @@ class Header extends React.Component {
           </Link>
           <Link to="gymLandingPage">Gym Landing Page</Link>
           <Link to="ui">UI Components</Link>
-          <Link to="other">AG Grid Project</Link>
+          <Link to="other">Sign Up</Link>
         </div>
       </div>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../components/homePage/Card.jsx";
+import Card from "../components/landingPage/heroSection/Card.jsx";
 import Section from "../components/homePage/Section.jsx";
 import Wave from "../components/homePage/Wave.jsx";
 import { Link } from "react-router-dom";

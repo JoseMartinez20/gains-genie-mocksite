@@ -1,14 +1,13 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
-import Wave from "../homePage/Wave";
+import Wave from "../../components/homePage/Wave";
 import gymImage from "../../assets/gym-background-blur.png";
 
 function HeroSection() {
   return (
     <HeroContainer>
       <HeroGroup>
-        <h1>Lift more.</h1>
+        <h1>Gym Genie</h1>
         <h1>Lift together.</h1>
         <p>
           Gym Genie is the simplest, most intuitive workout tracking experience.

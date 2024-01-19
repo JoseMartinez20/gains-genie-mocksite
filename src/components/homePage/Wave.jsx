@@ -2,7 +2,7 @@ import React from "react";
 
 const Wave = () => (
   <svg width="100%" height="172" fill="none">
-    <path fill="white">
+    <path fill="#0f0e12">
       <animate
         repeatCount="indefinite"
         fill="freeze"

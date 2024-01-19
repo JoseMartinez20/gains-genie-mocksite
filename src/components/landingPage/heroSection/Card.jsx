@@ -29,6 +29,7 @@ const CardContainer = styled.div`
 
     img {
       transform: translateY(-20px);
+      filter: blur(0px);
     }
   }
 
@@ -38,13 +39,14 @@ const CardContainer = styled.div`
     height: 110%;
     z-index: -1;
     transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter: blur(2px);
   }
 
   h3 {
     color: white;
     font-size: 30px;
     margin: 20px 0px 0px 20px;
-    width: 190px;
+    width: 220px;
   }
 
   p {
