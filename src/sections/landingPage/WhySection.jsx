@@ -1,41 +1,54 @@
 import React from "react";
 import styled from "styled-components";
 import WhyCard from "../../components/landingPage/whySection/WhyCard";
-import { H2 } from "../../styles/texStyles";
 import image from "../../assets/g-dumbbell.svg";
+import { TitleStyle } from "../../styles/texStyles";
 
 function WhySection() {
   return (
-    <Container>
-      <Title>
-        Why <span>Gym Genie</span>?
-      </Title>
-      <CardContainer>
-        <WhyCard
-          title="Personalized Fitness"
-          description="Get AI-driven workout recommendations customized to your fitness level and goals, ensuring each session maximizes your progress."
-          image={image}
-        />
+    <SectionContainer>
+      <Container>
+        <Title>
+          Why <span>Gym Genie</span>?
+        </Title>
+        <CardContainer>
+          <WhyCard
+            title="Personalized Fitness"
+            description="Get AI-driven workout recommendations customized to your fitness level and goals, ensuring each session maximizes your progress."
+            image={image}
+          />
 
-        <WhyCard
-          title="Nutrition"
-          description="Log meals, track macros, and manage your diet with our easy-to-use nutrition tracker, designed to complement your fitness regime."
-          image={image}
-        />
+          <WhyCard
+            title="Nutrition"
+            description="Log meals, track macros, and manage your diet with our easy-to-use nutrition tracker, designed to complement your fitness regime."
+            image={image}
+          />
 
-        <WhyCard
-          title="Community"
-          description="Work out with friends, share progress, and stay motivated together. Transform your fitness into a shared, enjoyable journey."
-          image={image}
-        />
-      </CardContainer>
-    </Container>
+          <WhyCard
+            title="Community"
+            description="Work out with friends, share progress, and stay motivated together. Transform your fitness into a shared, enjoyable journey."
+            image={image}
+          />
+        </CardContainer>
+      </Container>
+    </SectionContainer>
   );
 }
 export default WhySection;
 
-const Container = styled.div.attrs({
+const SectionContainer = styled.div.attrs({
   className: "Section Container",
+})`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8em;
+  margin: 3em 7%;
+`;
+
+const Container = styled.div.attrs({
+  className: "Container",
 })`
   width: 100%;
   display: flex;
@@ -46,13 +59,12 @@ const Container = styled.div.attrs({
   color: white;
 `;
 
-const Title = styled.h2`
+const Title = styled(TitleStyle).attrs({
+  className: "Section Title",
+})`
   margin: 50px 20px;
-  font-size: 60px;
   text-align: center;
-  font-weight: 700;
   background: white;
-  /* background: linear-gradient(104deg, var(--primary) 0%, var(--accent) 100%); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   span {
@@ -62,14 +74,16 @@ const Title = styled.h2`
   }
 `;
 
-const CardContainer = styled.div`
+const CardContainer = styled.div.attrs({
+  className: "Card Container",
+})`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
   gap: 3em;
   @media (max-width: 960px) {
     flex-direction: column;
+    align-items: center;
     gap: 2em;
   }
 `;

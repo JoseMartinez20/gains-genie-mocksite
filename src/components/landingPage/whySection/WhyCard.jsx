@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { NormalText, Subtitle } from "../../../styles/texStyles";
+import { NormalTextStyle, SubtitleStyle } from "../../../styles/texStyles";
 
 function WhyCard({ title, description, image }) {
   return (
@@ -32,7 +32,7 @@ const Container = styled.div.attrs({
     transform: scale(103%);
   }
   @media (max-width: 960px) {
-    width: 100%;
+    width: 50%;
   }
 `;
 
@@ -43,11 +43,9 @@ const Image = styled.img`
   max-height: 80px;
 `;
 
-const Title = styled(Subtitle)``;
-const Text = styled(NormalText)`
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-`;
+const Title = styled(SubtitleStyle).attrs({
+  className: "Title",
+})``;
+const Text = styled(NormalTextStyle).attrs({
+  className: "Text",
+})``;

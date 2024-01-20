@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import { LargeTextStyle, LargeTitleStyle } from "../../styles/texStyles";
 import Wave from "../../components/homePage/Wave";
 import gymImage from "../../assets/gym-background-blur.png";
 
@@ -7,12 +8,15 @@ function HeroSection() {
   return (
     <HeroContainer>
       <HeroGroup>
-        <h1>Gym Genie</h1>
-        <h1>Lift together.</h1>
-        <p>
+        <Title>
+          Gym Genie
+          <br />
+          Lift together.
+        </Title>
+        <Text>
           Gym Genie is the simplest, most intuitive workout tracking experience.
           Trusted by over 3 million users worldwide.
-        </p>
+        </Text>
         <Button>Get started</Button>
         <Wave />
       </HeroGroup>
@@ -34,7 +38,7 @@ const HeroAnimation = keyframes`
   }
 `;
 
-const HeroContainer = styled.section.attrs({
+const HeroContainer = styled.div.attrs({
   className: "Hero Container",
 })`
   background: url(${gymImage});
@@ -43,55 +47,42 @@ const HeroContainer = styled.section.attrs({
   background-position: center;
   position: relative;
 
-  h1 {
-    margin: 0;
-    color: white;
-    font-size: 96px;
-    line-height: 1.2;
-    opacity: 0;
-    animation: ${HeroAnimation};
-    animation-duration: 3s;
-    animation-delay: 0.1s;
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  h2 {
-    color: white;
-    opacity: 0;
-    animation: ${HeroAnimation};
-    animation-duration: 3s;
-    animation-delay: 0.1s;
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-
-  p {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 30px;
-    line-height: 1.5;
-    animation: ${HeroAnimation} 3s 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
-    opacity: 0;
-  }
-
   svg {
     position: absolute;
     bottom: 0;
-    left: 0;
-  }
-
-  @media (max-width: 640px) {
-    h1 {
-      font-size: 40px;
-    }
-
-    p {
-      font-size: 24px;
-    }
   }
 `;
 
-const Button = styled.button`
+const HeroGroup = styled.div.attrs({
+  className: "Hero Group",
+})`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 150px 50px;
+  text-align: center;
+`;
+
+const Title = styled(LargeTitleStyle).attrs({
+  className: "Hero Title",
+})`
+  margin: 0;
+  animation: ${HeroAnimation} 3s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+`;
+
+const Text = styled(LargeTextStyle).attrs({
+  className: "Hero Text",
+})`
+  color: rgba(255, 255, 255, 0.8);
+  animation: ${HeroAnimation} 3s 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+  opacity: 0;
+`;
+
+export const Button = styled.button.attrs({
+  className: "CTA Button",
+})`
   font-size: 17px;
   font-weight: 600;
   text-decoration: none;
@@ -106,26 +97,10 @@ const Button = styled.button`
   margin: 10px 100px;
   display: grid;
   grid-template-rows: repeat(1, 1fr);
-  animation: ${HeroAnimation};
-  animation-duration: 3s;
-  animation-delay: 0.1s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: ${HeroAnimation} 3s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
 
   &:hover {
     background: var(--primary);
     cursor: pointer;
   }
-`;
-
-const HeroGroup = styled.div.attrs({
-  className: "Hero Group",
-})`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 700px;
-  padding: 150px 50px;
-  text-align: center;
 `;

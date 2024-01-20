@@ -1,17 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { NormalTextStyle, SubtitleStyle } from "../../../styles/texStyles";
 
 const Card = (props) => (
   <CardContainer>
     <img src={props.image} />
-    <h3>{props.title}</h3>
-    <p>{props.text}</p>
+    <Title>{props.title}</Title>
+    <Text>{props.text}</Text>
   </CardContainer>
 );
 
 export default Card;
 
-const CardContainer = styled.div`
+const CardContainer = styled.div.attrs({
+  className: "Card Container",
+})`
   width: 300px;
   height: 225px;
   position: relative;
@@ -41,20 +44,20 @@ const CardContainer = styled.div`
     transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     filter: blur(2px);
   }
+`;
 
-  h3 {
-    color: white;
-    font-size: 30px;
-    margin: 20px 0px 0px 20px;
-    width: 220px;
-  }
+const Title = styled(SubtitleStyle).attrs({
+  className: "Card Title",
+})`
+  margin: 20px 0px 0px 20px;
+  width: 220px;
+`;
 
-  p {
-    color: rgba(255, 255, 255, 0.8);
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 18px;
-    align-self: end;
-    margin: 0 0 20px 20px;
-  }
+const Text = styled(NormalTextStyle).attrs({
+  className: "Card Text",
+})`
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  align-self: end;
+  margin: 0 0 20px 20px;
 `;

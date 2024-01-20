@@ -1,6 +1,7 @@
 import React from "react";
 import Wave from "./Wave.jsx";
 import styled from "styled-components";
+import { NormalTextStyle, TitleStyle } from "../../styles/texStyles.js";
 
 const Section = (props) => (
   <SectionContainer style={{ backgroundImage: `url(${props.image})` }}>
@@ -11,7 +12,7 @@ const Section = (props) => (
       <Wave />
     </WaveBottom>
     <SectionTitleGroup>
-      <SectionTitle>{props.title}</SectionTitle>
+      <Title>{props.title}</Title>
       <SectionText>{props.text}</SectionText>
     </SectionTitleGroup>
   </SectionContainer>
@@ -19,7 +20,9 @@ const Section = (props) => (
 
 export default Section;
 
-const SectionContainer = styled.div`
+const SectionContainer = styled.div.attrs({
+  className: "Section Container",
+})`
   margin: 100px 0 0;
   background-size: cover;
   height: 720px;
@@ -29,20 +32,26 @@ const SectionContainer = styled.div`
   position: relative;
 `;
 
-const WaveTop = styled.div`
+const WaveTop = styled.div.attrs({
+  className: "Top Wave Container",
+})`
   position: absolute;
   width: 100%;
   top: -6px;
   transform: rotate(180deg);
 `;
 
-const WaveBottom = styled.div`
+const WaveBottom = styled.div.attrs({
+  className: "Bottom Wave Container",
+})`
   position: absolute;
   width: 100%;
   bottom: -6px;
 `;
 
-const SectionTitleGroup = styled.div`
+const SectionTitleGroup = styled.div.attrs({
+  className: "Section Title Group",
+})`
   max-width: 800px;
   margin: -140px 40px;
   display: grid;
@@ -52,13 +61,8 @@ const SectionTitleGroup = styled.div`
   align-self: end;
 `;
 
-const SectionTitle = styled.h1`
-  color: white;
-  font-size: 60px;
-  margin: 0;
-  line-height: 1.2;
-`;
+const Title = styled(TitleStyle).attrs({
+  className: "Section Title",
+})``;
 
-const SectionText = styled.p`
-  color: white;
-`;
+const SectionText = styled(NormalTextStyle)``;

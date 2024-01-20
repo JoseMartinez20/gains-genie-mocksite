@@ -1,29 +1,37 @@
 import React from "react";
 import styled from "styled-components";
+import { TitleStyle, SmallTitle } from "../styles/texStyles";
+import { Button } from "./landingPage/HeroSection";
 
 function JoinSection() {
   return (
-    <div>
+    <Container>
       <Title>
         Join The <span>Community</span>
       </Title>
       <Text>Thousands of gym goers have already joined Gym Genie</Text>
-    </div>
+      <Button> Get started</Button>
+    </Container>
   );
 }
 export default JoinSection;
 
-const Title = styled.h1`
-  margin: 50px 20px;
-  font-size: 60px;
-  text-align: center;
-  font-weight: 700;
-  background: white;
+const Container = styled.div.attrs({
+  className: "Section Container",
+})`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-  /* background: linear-gradient(104deg, var(--primary) 0%, var(--accent) 100%); */
+const Title = styled(TitleStyle).attrs({
+  className: "Section Title",
+})`
+  margin: 50px 20px 0px;
+  text-align: center;
+  background: white;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   span {
     background: linear-gradient(120deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
@@ -31,13 +39,8 @@ const Title = styled.h1`
   }
 `;
 
-const Text = styled.h2`
-  margin: 50px 20px;
-  font-size: 40px;
+const Text = styled(SmallTitle).attrs({
+  className: "Text",
+})`
   text-align: center;
-  font-weight: 700;
-  background: white;
-  /* background: linear-gradient(104deg, var(--primary) 0%, var(--accent) 100%); */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 `;
