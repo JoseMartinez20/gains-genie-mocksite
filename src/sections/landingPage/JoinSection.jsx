@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { TitleStyle, SmallTitle } from "../styles/texStyles";
-import { Button } from "./landingPage/HeroSection";
+import { TitleStyle, SmallTitle } from "../../styles/texStyles";
+import { Button } from "./HeroSection";
 
 function JoinSection() {
   return (

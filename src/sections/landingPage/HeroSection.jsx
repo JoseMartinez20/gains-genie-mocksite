@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { LargeTextStyle, LargeTitleStyle } from "../../styles/texStyles";
-import Wave from "../../components/homePage/Wave";
+import Wave from "../../components/landingPage/Wave";
 import gymImage from "../../assets/gym-background-blur.png";
 
 function HeroSection() {
