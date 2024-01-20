@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { LargeTextStyle, LargeTitleStyle } from "../../styles/texStyles";
 import Wave from "../../components/landingPage/Wave";
 import gymImage from "../../assets/gym-background-blur.png";
+import Auth from "../../components/auth/auth";
 
 function HeroSection() {
   return (
@@ -17,7 +18,7 @@ function HeroSection() {
           Gym Genie is the simplest, most intuitive workout tracking experience.
           Trusted by over 3 million users worldwide.
         </Text>
-        <Button>Get started</Button>
+        <Auth />
         <Wave />
       </HeroGroup>
     </HeroContainer>
