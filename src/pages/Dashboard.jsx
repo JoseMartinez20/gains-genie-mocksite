@@ -39,9 +39,9 @@ function Dashboard() {
           </div>
         ))}
       </BoxMiddle>
-      <BoxRight>
-
-      </BoxRight>
+      <BoxTopRight>
+            <ProfileInfo></ProfileInfo>
+      </BoxTopRight>
     </div>
   );
 }
