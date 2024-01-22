@@ -7,41 +7,39 @@ import Profile from "./Profile";
 import Summary from "./ActivityGraphs";
 import ChartComponent from "./ActivityGraphs2";
 import { Box } from "../../src/styles/texStyles";
+import Header from "../components/header";
 
 function Dashboard() {
   const chartDataSets = [
     {
       id: 1,
-      xValues: ['Label 1', 'Label 2', 'Label 3'],
+      xValues: ["Label 1", "Label 2", "Label 3"],
       yValues: [10, 20, 30],
-      label: 'Dataset 1',
+      label: "Dataset 1",
     },
     {
       id: 2,
-      xValues: ['Label A', 'Label B', 'Label C'],
+      xValues: ["Label A", "Label B", "Label C"],
       yValues: [15, 25, 35],
-      label: 'Dataset 2',
+      label: "Dataset 2",
     },
     // Add more data sets as needed
   ];
 
   return (
     <div>
-      <Heading>You're logged in</Heading>
-      <NavBar/>
+      <Header />
+      <NavBar />
       <h1> Summary </h1>
       <BoxMiddle>
-          {chartDataSets.map((chartData) =>
-          (<div>
-          <GraphLabel> {JSON.stringify(chartData.label)} </GraphLabel>
+        {chartDataSets.map((chartData) => (
+          <div>
+            <GraphLabel> {JSON.stringify(chartData.label)} </GraphLabel>
             <ChartComponent key={chartData.id} dataset={chartData} />
-          </div>)
-          )
-        }
+          </div>
+        ))}
       </BoxMiddle>
-      <BoxRight>
-
-      </BoxRight>
+      <BoxRight></BoxRight>
     </div>
   );
 }
@@ -78,10 +76,4 @@ const GraphLabel = styled.div.attrs({
   font-size: 32px;
   font-weight: bold;
   font-style: italic;
-`;
-
-const Heading = styled.div.attrs({
-  className: "Heading",
-})`
-  color: red;
 `;
