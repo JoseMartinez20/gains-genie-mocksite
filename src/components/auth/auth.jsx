@@ -6,6 +6,7 @@ import { Button } from "../../sections/landingPage/HeroSection";
 const Auth = () => {
   const checkUser = () => {
     console.log(auth?.currentUser?.email);
+    // return auth?.currentUser;
   };
 
   const signInWithGoogle = async () => {
@@ -27,8 +28,8 @@ const Auth = () => {
   return (
     <div>
       <Button onClick={signInWithGoogle}> Get Started</Button>
-      {/* <Button onClick={checkUser}> Get user</Button> */}
-      {/* <Button onClick={logout}> logout</Button> */}
+      <Button onClick={checkUser}> Get user</Button>
+      <Button onClick={logout}> logout</Button>
     </div>
   );
 };
