@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase";
 
-function LogOutButton() {
+function LogOutButton(props) {
   const logout = async () => {
     try {
       await signOut(auth);
@@ -14,7 +14,7 @@ function LogOutButton() {
 
   return (
     <div>
-      <Button onClick={logout}>Sign Out</Button>
+      <Button onClick={props.onClick}>{props.title}</Button>
     </div>
   );
 }

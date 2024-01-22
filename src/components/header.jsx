@@ -3,8 +3,8 @@ import "../styles/header.css";
 import logo from "../assets/g-dumbbell.svg";
 import { Link } from "react-router-dom";
 import LogOutButton from "./auth/logoutButton";
-import { auth } from "../config/firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { auth, googleProvider } from "../config/firebase";
+import { onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 
 function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -17,8 +17,6 @@ function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    // Cleanup function to remove the event listener
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -35,6 +33,22 @@ function Header() {
     return () => unsubscribe();
   }, []);
 
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   if (isLoggedIn) {
     return (
       <div className={hasScrolled ? "Header HeaderScrolled" : "Header"}>
@@ -42,8 +56,8 @@ function Header() {
           <Link id="logoLink" to="/">
             <img src={logo} width="40" height="40" alt="logo" />
           </Link>
-          <Link to="ui">UI Components</Link>
-          <LogOutButton />
+          <Link to="/">Placeholder</Link>
+          <LogOutButton onClick={logout} title="Log Out" />
         </div>
       </div>
     );
@@ -54,7 +68,8 @@ function Header() {
           <Link id="logoLink" to="/">
             <img src={logo} width="40" height="40" alt="logo" />
           </Link>
-          <Link to="ui">UI Components</Link>
+          <Link to="/">Placeholder</Link>
+          <LogOutButton onClick={signInWithGoogle} title="Log In" />
         </div>
       </div>
     );
