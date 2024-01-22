@@ -9,6 +9,16 @@ export const LargeTitleStyle = styled.h1`
   }
 `;
 
+export const Box = styled.div`
+  position: absolute;
+  height: 1265px;
+  width: 500px;
+  background-color: #ffffff;
+  left: 20%;
+  right: 90%;
+  top: 100;
+`;
+
 export const TitleStyle = styled.h1`
   font-size: 60px;
   font-weight: 700;
