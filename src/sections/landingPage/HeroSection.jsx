@@ -19,7 +19,7 @@ function HeroSection() {
           Trusted by over 3 million users worldwide.
         </Text>
         <Auth />
-        {/* <Wave /> */}
+        <Wave />
       </HeroGroup>
     </HeroContainer>
   );

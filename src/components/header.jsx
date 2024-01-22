@@ -1,42 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/header.css";
 import logo from "../assets/g-dumbbell.svg";
 import { Link } from "react-router-dom";
+import LogOutButton from "./auth/logoutButton";
+import { auth } from "../config/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
+function Header() {
+  const [hasScrolled, setHasScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    this.state = {
-      hasScrolled: false,
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      setHasScrolled(scrollTop > 0);
     };
-  }
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-  }
+    window.addEventListener("scroll", handleScroll);
 
-  handleScroll = (event) => {
-    const scrollTop = window.pageYOffset;
+    // Cleanup function to remove the event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-    if (scrollTop > 0) {
-      this.setState({ hasScrolled: true });
-    } else {
-      this.setState({ hasScrolled: false });
-    }
-  };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
-  render() {
+  if (isLoggedIn) {
     return (
-      <div
-        className={this.state.hasScrolled ? "Header HeaderScrolled" : "Header"}
-      >
+      <div className={hasScrolled ? "Header HeaderScrolled" : "Header"}>
         <div className="HeaderGroup">
           <Link id="logoLink" to="/">
-            <img src={logo} width="40" height="40" />
+            <img src={logo} width="40" height="40" alt="logo" />
           </Link>
           <Link to="ui">UI Components</Link>
-          <Link to="other">Sign Up</Link>
+          <LogOutButton />
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className={hasScrolled ? "Header HeaderScrolled" : "Header"}>
+        <div className="HeaderGroup">
+          <Link id="logoLink" to="/">
+            <img src={logo} width="40" height="40" alt="logo" />
+          </Link>
+          <Link to="ui">UI Components</Link>
         </div>
       </div>
     );
