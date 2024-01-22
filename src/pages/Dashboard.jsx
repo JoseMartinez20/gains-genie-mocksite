@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { Button } from "../sections/landingPage/HeroSection";
 import NavBar from "./NavBar";
 import Profile from "./Profile";
-import Summary from "./ActivityGraphs";
-import ChartComponent from "./ActivityGraphs2";
+import ChartComponent from "./ChartComponent";
+import ProfileInfo from "./ProfileInfo";
 import { Box } from "../../src/styles/texStyles";
 import Header from "../components/header";
 
@@ -39,7 +39,9 @@ function Dashboard() {
           </div>
         ))}
       </BoxMiddle>
-      <BoxRight></BoxRight>
+      <BoxRight>
+
+      </BoxRight>
     </div>
   );
 }
@@ -55,18 +57,18 @@ const BoxMiddle = styled(Box).attrs({
   left: 20%;
   right: 90%;
   top: 100;
+  border-radius: 30px;
 `;
 
-const BoxRight = styled(Box).attrs({
-  className: "BoxRight",
+const BoxTopRight = styled(Box).attrs({
+  className: "BoxTopRight",
 })`
-  position: absolute;
-  height: 1265px;
-  width: 500px;
+  width: 453px; 
+  height: 470px; 
   background-color: #ffffff;
-  left: 80%;
-  right: 20%;
-  top: 100;
+  left: 60%;
+  right: 10%;
+  border-radius: 30px;
 `;
 
 const GraphLabel = styled.div.attrs({
