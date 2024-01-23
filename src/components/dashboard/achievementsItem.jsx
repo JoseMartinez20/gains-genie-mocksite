@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import { TitleStyle, SubtitleStyle, NormalTextStyle } from "../../../styles/postAuthStyles"
+import { TitleStyle, SubtitleStyle, NormalTextStyle } from "../../styles/postAuthStyles"
 import trophy from "../../assets/trophy-icon.png"
 
 function achievementsItem() {

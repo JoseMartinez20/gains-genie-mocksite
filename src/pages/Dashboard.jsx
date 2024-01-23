@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../sections/landingPage/HeroSection";
-import NavBar from "../components/post-auth/NavBar";
+import NavBar from "./NavBar";
 import Profile from "./Profile";
-import ChartComponent from "../components/post-auth/dashboard/ChartComponent";
+import ChartComponent from "./ChartComponent";
 import ProfileInfo from "./ProfileInfo";
 import { Box } from "../../src/styles/texStyles";
 import Header from "../components/header";
-
 
 function Dashboard() {
   const chartDataSets = [
@@ -31,9 +30,8 @@ function Dashboard() {
     <div>
       <Header />
       <NavBar />
-      {/* <h1> Summary </h1> */}
+      <h1> Summary </h1>
       <BoxMiddle>
-
         {chartDataSets.map((chartData) => (
           <div>
             <GraphLabel> {JSON.stringify(chartData.label)} </GraphLabel>
