@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import stockProfileImage from "../assets/stock-profile-image.png";
 import { Box } from "../../src/styles/texStyles";
-import { TitleStyle, SubtitleStyle, NormalTextStyle } from "../styles/postAuthStyles"
+import { TitleStyle, SubtitleStyle, NormalTextStyle } from "../styles/postAuthStyles";
+import { auth, db } from "../config/firebase";
+import { doc, getDoc } from "firebase/firestore"; // Use getDoc for a single document
 import ButtonsSection from "../sections/dashboardPage/ProfileButtonsSection"
 
 function ProfileInfo() {
@@ -12,8 +14,8 @@ function ProfileInfo() {
             <Ellipse> <img src={stockProfileImage}></img> </Ellipse>
         </div>
         <div>
-          <Name> Jessica Jimenez </Name>
-          <UserName>@jess1938</UserName>
+          <Name> {auth.currentUser.displayName} </Name>
+          <UserName>{auth.currentUser.email}</UserName>
         </div>
         {/* Add friends,followers, routines stats */}
         <Line/>
@@ -58,10 +60,11 @@ const BoxTopRight = styled(Box).attrs({
   className: "BoxTopRight",
 })`
   width: 453px; 
-  height: 470px; 
+  height: 400px; 
   background-color: #ffffff;
-  left: 60%;
+  left: 63%;
   right: 10%;
+  top: 7%;
   border-radius: 30px;
 `;
 

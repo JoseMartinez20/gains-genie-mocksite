@@ -25,12 +25,14 @@ const Button = styled.button.attrs({
   className: "Logout Button",
 })`
   padding: 4px 20px;
-  font-size: 20px;
+  font-size: 25px;
   background: #fff;
-  border: none;
   font-weight: 700;
   border-radius: 10px;
-  outline: none;
+  position: relative;
+  float: right;
+  bottom: 90%;
   cursor: pointer;
   transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+
 `;

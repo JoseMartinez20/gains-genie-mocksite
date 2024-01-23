@@ -3,11 +3,11 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../sections/landingPage/HeroSection";
 import NavBar from "./NavBar";
-import ProfileUsingAuthInfo from "./Profile";
+// import Profile from "./Profile";
 import ChartComponent from "./ChartComponent";
-import Profile from "./ProfileInfo";
+import ProfileInfo from "./ProfileInfo";
 import { Box } from "../../src/styles/texStyles";
-import Header from "../components/header";
+import ProfileHeader from "./ProfileHeader";
 import Achievements from "../sections/dashboardPage/AchievementsSection";
 
 function Dashboard() {
@@ -29,19 +29,29 @@ function Dashboard() {
 
   return (
     <div>
-      <Header />
+      <ProfileHeader />
       <NavBar />
-      <h1> Summary </h1>
       <BoxMiddle>
         {chartDataSets.map((chartData) => (
           <div>
-            <GraphLabel> {JSON.stringify(chartData.label)} </GraphLabel>
             <ChartComponent key={chartData.id} dataset={chartData} />
           </div>
         ))}
       </BoxMiddle>
-      <Profile/>
-      <Achievements/>
+      <ProfileInfo />
+
+      {/* <div>
+          <button onClick={() => handleOptionChange('profile')}>Profile Info</button>
+          <button onClick={() => handleOptionChange('friends')}>Friends</button>
+          <button onClick={() => handleOptionChange('leaderboard')}>Leaderboard</button>
+        </div>
+
+        {/* Display content based on the selected option */}
+      {/* {selectedOption === 'profile' && <ProfileInfo />}
+        {selectedOption === 'friends' && <Friends />}
+        {selectedOption === 'leaderboard' && <Leaderboard />} */}
+
+      <Achievements />
     </div>
   );
 }
@@ -56,11 +66,21 @@ const BoxMiddle = styled(Box).attrs({
   background-color: #ffffff;
   left: 20%;
   right: 90%;
-  top: 100;
+  top: 7%;
   border-radius: 30px;
 `;
 
-
+const BoxTopRight = styled(Box).attrs({
+  className: "BoxTopRight",
+})`
+  position: absolute;
+  width: 453px;
+  height: 270px;
+  background-color: #ffffff;
+  left: 60%;
+  right: 10%;
+  border-radius: 30px;
+`;
 
 const GraphLabel = styled.div.attrs({
   className: "GraphLabel",

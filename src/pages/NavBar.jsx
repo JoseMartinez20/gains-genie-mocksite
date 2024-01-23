@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import logoImage from "../assets/gym-genie-logo-smaller.png";
 import profileImage from "../assets/profile-icon.png";
 import historyImage from "../assets/history-icon.png";
 import routinesImage from "../assets/routine-icon.png";
@@ -11,6 +12,13 @@ import settingsImage from "../assets/settings-icon.png";
 function NavBar() {
   return (
     <Section>
+      <SectionGroup>
+        <ProfileImage>
+          {" "}
+          <img src={logoImage} height="20" width="30"/>{" "}
+        </ProfileImage>
+        <ProfileTitle> Gym Genie</ProfileTitle>
+      </SectionGroup>
       <SectionGroup>
         <SectionImage>
           {" "}
@@ -60,23 +68,25 @@ function NavBar() {
 const Section = styled.div.attrs({
   className: "Section",
 })`
+  top: 10%;
   height: 1265px;
   width: 219px;
   background-color: #ffffff;
   left: 0;
   position: absolute;
-  top: 100;
+  top: 7%;
+  border-radius: 30px;
 `;
 
 const SectionGroup = styled.div.attrs({
   className: "SectionGroup",
 })`
-  width: 131.66px;
+  width: 200.66px;
   height: 30.38px;
   position: "relative";
   display: flex;
   flex-direction: row;
-  padding: 10px;
+  padding: 23px;
 `;
 
 const SectionImage = styled.div.attrs({
@@ -103,5 +113,28 @@ const SectionTitle = styled.div.attrs({
   display: inline-block;
   margin-left: 10px;
 `;
+
+const ProfileTitle = styled(SectionTitle).attrs({
+  className: "ProfileTitle",
+})`
+  width: 100px; 
+  height: 50px; 
+  text-align: center;
+  top: 50%; 
+  color: #4572A7; 
+  font-size: 21px; 
+  font-family: Inter; 
+  font-weight: 800;
+  display: "inline-block";
+  margin-bottom: 30px;
+`;
+
+const ProfileImage = styled(SectionImage).attrs({
+  className: "ProfileImage",
+})`
+  max-width: 10%;
+  margin-top: 10px;
+`;
+
 
 export default NavBar;

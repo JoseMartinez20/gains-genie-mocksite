@@ -26,15 +26,14 @@ const AchievementsContainer = styled.div.attrs({
     className: "Achievements Container",
   })`
     background-color: white;
-    width: 452px;
+    width: 453px;
     height: 336px;
-    flex-shrink: 0; // maybe change
     position: absolute;
     //right: 0px;
-    left: 60%;
+    left: 63%;
     right: 10%;
-    top: 77%;
-    border-radius: 10.833px;
+    top: 50%;
+    border-radius: 30px;
   
     //svg {
     //  position: absolute;

@@ -54,7 +54,7 @@ function OnboardingFlow() {
       <div>
         {currentStep === 1 && (
           <OnboardingSectionContainer
-            title="What is your name?"
+            title="Please provide us with this registration info?"
             text="Your name is used for social purposes"
             onClick={goToNextStep}
             buttonTitle="Continue"
@@ -62,6 +62,7 @@ function OnboardingFlow() {
             <InputContainer>
               <input placeholder="First Name"></input>
               <input placeholder="Last Name"></input>
+              <input placeholder="User Name"></input>
             </InputContainer>
           </OnboardingSectionContainer>
         )}
