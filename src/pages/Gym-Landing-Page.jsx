@@ -10,7 +10,6 @@ import { auth } from "../config/firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
 import Header from "../components/header.jsx";
 import OnboardingFlow from "./OnboardingFlow.jsx";
-import Dashboard from "./Dashboard.jsx";
 
 function GymLandingPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,7 +29,6 @@ function GymLandingPage() {
     return (
       <div>
         <OnboardingFlow />
-        {/* <Dashboard /> */}
       </div>
     );
   } else {
