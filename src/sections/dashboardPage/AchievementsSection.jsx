@@ -25,12 +25,15 @@ export default Achievements;
 const AchievementsContainer = styled.div.attrs({
     className: "Achievements Container",
   })`
-    background-color: gray;
+    background-color: white;
     width: 452px;
     height: 336px;
     flex-shrink: 0; // maybe change
     position: absolute;
-    right: 0px;
+    //right: 0px;
+    left: 60%;
+    right: 10%;
+    top: 77%;
     border-radius: 10.833px;
   
     //svg {

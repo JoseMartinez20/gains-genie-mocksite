@@ -3,11 +3,12 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../sections/landingPage/HeroSection";
 import NavBar from "./NavBar";
-import Profile from "./Profile";
+import ProfileUsingAuthInfo from "./Profile";
 import ChartComponent from "./ChartComponent";
-import ProfileInfo from "./ProfileInfo";
+import Profile from "./ProfileInfo";
 import { Box } from "../../src/styles/texStyles";
 import Header from "../components/header";
+import Achievements from "../sections/dashboardPage/AchievementsSection";
 
 function Dashboard() {
   const chartDataSets = [
@@ -39,9 +40,8 @@ function Dashboard() {
           </div>
         ))}
       </BoxMiddle>
-      <BoxTopRight>
-            <ProfileInfo></ProfileInfo>
-      </BoxTopRight>
+      <Profile/>
+      <Achievements/>
     </div>
   );
 }
@@ -60,16 +60,7 @@ const BoxMiddle = styled(Box).attrs({
   border-radius: 30px;
 `;
 
-const BoxTopRight = styled(Box).attrs({
-  className: "BoxTopRight",
-})`
-  width: 453px; 
-  height: 470px; 
-  background-color: #ffffff;
-  left: 60%;
-  right: 10%;
-  border-radius: 30px;
-`;
+
 
 const GraphLabel = styled.div.attrs({
   className: "GraphLabel",

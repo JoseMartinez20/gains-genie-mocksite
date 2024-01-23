@@ -1,17 +1,20 @@
 import styled from "styled-components";
 import stockProfileImage from "../assets/stock-profile-image.png";
+import { Box } from "../../src/styles/texStyles";
+import { TitleStyle, SubtitleStyle, NormalTextStyle } from "../styles/postAuthStyles"
 
 function ProfileInfo() {
   return (
-    <div>
+    <BoxTopRight>
         <div>
             <Ellipse> <img src={stockProfileImage}></img> </Ellipse>
         </div>
             <Name> Jessica Jimenez </Name>
             <UserName>@jess1938</UserName>
-    </div>
-  )
+    </BoxTopRight>
+  );
 }
+export default ProfileInfo;
 
 
 const Ellipse = styled.div.attrs({
@@ -30,15 +33,28 @@ const Ellipse = styled.div.attrs({
     padding: 5px
 `;
 
-const Name = styled.h5`
-    text-align: center;
+const Name = styled(TitleStyle).attrs({
+    className: "Name",
+  })`
+  margin: 0 0 5px 0;
 `;
 
-const UserName = styled.h6`
-    text-align: center;
+const UserName = styled(SubtitleStyle).attrs({
+    className: "UserName",
+  })`
+  margin: 0 0 0 0;
 `;
 
-export default ProfileInfo;
+const BoxTopRight = styled(Box).attrs({
+  className: "BoxTopRight",
+})`
+  width: 453px; 
+  height: 470px; 
+  background-color: #ffffff;
+  left: 60%;
+  right: 10%;
+  border-radius: 30px;
+`;
 
 {/* <div className="Content" style={{width: 1044, height: 1590, position: 'relative', background: '#F4F3F3'}} />
 <div className="TemporaryProfilePic" style={{width: 82.41, height: 82.41, position: 'relative'}}>
