@@ -9,8 +9,14 @@ function ProfileInfo() {
         <div>
             <Ellipse> <img src={stockProfileImage}></img> </Ellipse>
         </div>
-            <Name> Jessica Jimenez </Name>
-            <UserName>@jess1938</UserName>
+        <div>
+          <Name> Jessica Jimenez </Name>
+          <UserName>@jess1938</UserName>
+        </div>
+        {/* Add friends,followers, routines stats */}
+        <Line/>
+
+            
     </BoxTopRight>
   );
 }
@@ -55,6 +61,18 @@ const BoxTopRight = styled(Box).attrs({
   right: 10%;
   border-radius: 30px;
 `;
+
+const Line = styled(Box).attrs({
+  className: "Line",
+})`
+  height: 1px;
+  width: 328px;
+  background: rgba(136, 136, 136, 0.30);
+  position: static;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+`
 
 {/* <div className="Content" style={{width: 1044, height: 1590, position: 'relative', background: '#F4F3F3'}} />
 <div className="TemporaryProfilePic" style={{width: 82.41, height: 82.41, position: 'relative'}}>
