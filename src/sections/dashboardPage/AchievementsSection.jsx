@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import { TitleStyle, SubtitleStyle, NormalTextStyle } from "../styles/postAuthStyles";
-import Item from "../components/dashboard/achievementsItem";
+import { TitleStyle, SubtitleStyle, NormalTextStyle } from "../../styles/postAuthStyles";
+import Item from "../../components/dashboard/achievementsItem";
 
 function Achievements() {
     return (

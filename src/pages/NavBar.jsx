@@ -4,7 +4,7 @@ import { useState } from "react";
 import profileImage from "../assets/profile-icon.png";
 import historyImage from "../assets/history-icon.png";
 import routinesImage from "../assets/routine-icon.png";
-import exercisesImage from "../assets/exercise-icon.png";
+import exercisesImage from "../assets/exercise-icon-updated.png";
 import nutritionImage from "../assets/nutrition-icon.png";
 import settingsImage from "../assets/settings-icon.png";
 
@@ -35,9 +35,9 @@ function NavBar() {
       <SectionGroup>
         <SectionImage>
           {" "}
-          <img src={exercisesImage} />{" "}
+          <img src={exercisesImage} className="fit-image"/>{" "}
         </SectionImage>
-        <SectionTitle> Fitness </SectionTitle>
+        <SectionTitle> Exercise </SectionTitle>
       </SectionGroup>
       <SectionGroup>
         <SectionImage>
@@ -74,7 +74,8 @@ const SectionGroup = styled.div.attrs({
   width: 131.66px;
   height: 30.38px;
   position: "relative";
-  display: inline-block, flex;
+  display: flex;
+  flex-direction: row;
   padding: 10px;
 `;
 

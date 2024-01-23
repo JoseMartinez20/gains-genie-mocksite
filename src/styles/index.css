@@ -14,3 +14,8 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: var(--background);
 }
+
+.fit-image {
+  max-width: 100%;
+  height: auto
+}
