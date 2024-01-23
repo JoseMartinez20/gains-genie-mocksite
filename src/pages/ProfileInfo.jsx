@@ -1,7 +1,9 @@
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import stockProfileImage from "../assets/stock-profile-image.png";
 import { Box } from "../../src/styles/texStyles";
 import { TitleStyle, SubtitleStyle, NormalTextStyle } from "../styles/postAuthStyles"
+import ButtonsSection from "../sections/dashboardPage/ProfileButtonsSection"
 
 function ProfileInfo() {
   return (
@@ -15,6 +17,7 @@ function ProfileInfo() {
         </div>
         {/* Add friends,followers, routines stats */}
         <Line/>
+        <ButtonsSection/>
 
             
     </BoxTopRight>
@@ -69,9 +72,7 @@ const Line = styled(Box).attrs({
   width: 328px;
   background: rgba(136, 136, 136, 0.30);
   position: static;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 10px auto 10px auto;
 `
 
 {/* <div className="Content" style={{width: 1044, height: 1590, position: 'relative', background: '#F4F3F3'}} />
