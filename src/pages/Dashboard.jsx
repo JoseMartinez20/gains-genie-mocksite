@@ -41,14 +41,18 @@ function Dashboard() {
       <ProfileInfo />
 
       <div>
-          <button onClick={() => handleOptionChange('profile')}>Profile Info</button>
-          <button onClick={() => handleOptionChange('friends')}>Friends</button>
-          <button onClick={() => handleOptionChange('leaderboard')}>Leaderboard</button>
+        <button onClick={() => handleOptionChange("profile")}>
+          Profile Info
+        </button>
+        <button onClick={() => handleOptionChange("friends")}>Friends</button>
+        <button onClick={() => handleOptionChange("leaderboard")}>
+          Leaderboard
+        </button>
       </div>
-
-      {selectedOption === 'profile' && <ProfileInfo />}
-        {selectedOption === 'friends' && <Friends />}
-        {selectedOption === 'leaderboard' && <Leaderboard />}
+      {/* 
+      {selectedOption === "profile" && <ProfileInfo />}
+      {selectedOption === "friends" && <Friends />}
+      {selectedOption === "leaderboard" && <Leaderboard />} */}
 
       <Achievements />
     </div>
