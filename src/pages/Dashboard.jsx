@@ -5,9 +5,9 @@ import { Button } from "../sections/landingPage/HeroSection";
 import NavBar from "./NavBar";
 // import Profile from "./Profile";
 import ChartComponent from "./ChartComponent";
-import ProfileInfo from "./ProfileInfo";
+import ProfileInfo from "../sections/dashboardPage/ProfileInfo";
 import { Box } from "../../src/styles/texStyles";
-import ProfileHeader from "./ProfileHeader";
+import ProfileHeader from "../sections/dashboardPage/ProfileHeader";
 import Achievements from "../sections/dashboardPage/AchievementsSection";
 
 function Dashboard() {
@@ -40,16 +40,15 @@ function Dashboard() {
       </BoxMiddle>
       <ProfileInfo />
 
-      {/* <div>
+      <div>
           <button onClick={() => handleOptionChange('profile')}>Profile Info</button>
           <button onClick={() => handleOptionChange('friends')}>Friends</button>
           <button onClick={() => handleOptionChange('leaderboard')}>Leaderboard</button>
-        </div>
+      </div>
 
-        {/* Display content based on the selected option */}
-      {/* {selectedOption === 'profile' && <ProfileInfo />}
+      {selectedOption === 'profile' && <ProfileInfo />}
         {selectedOption === 'friends' && <Friends />}
-        {selectedOption === 'leaderboard' && <Leaderboard />} */}
+        {selectedOption === 'leaderboard' && <Leaderboard />}
 
       <Achievements />
     </div>
