@@ -3,12 +3,12 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Button } from "../sections/landingPage/HeroSection";
 import NavBar from "./NavBar";
-// import Profile from "./Profile";
 import ChartComponent from "./ChartComponent";
 import ProfileInfo from "../sections/dashboardPage/ProfileInfo";
 import { Box } from "../../src/styles/texStyles";
 import ProfileHeader from "../sections/dashboardPage/ProfileHeader";
 import Achievements from "../sections/dashboardPage/AchievementsSection";
+import ProfileButtonsSection from "../sections/dashboardPage/ProfileButtonsSection";
 
 function Dashboard() {
   const chartDataSets = [
@@ -27,6 +27,44 @@ function Dashboard() {
     // Add more data sets as needed
   ];
 
+  const healthMetricsSets = [
+    ["Weight", 180],
+    ["Height", 72],
+    ["Calorie Intake", 2500],
+  ];
+
+  const friends = [
+    {
+      name: "Jose Martinez",
+      username: "jmarti358",
+      profile: null,
+      picture: null,
+    },
+    {
+      name: "Jessica Jimenez",
+      username: "jessjime499",
+      profile: null,
+      picture: null,
+    },
+  ];
+
+  const leaders = [
+    {
+      name: "Jose Martinez",
+      PR_gain: "15 lbs",
+    },
+    {
+      name: "Jessica Jimenez",
+      PR_gain: "35 lbs",
+    },
+  ];
+
+  const [selectedToggle, setSelectedToggle] = useState("profile");
+
+  const handleOptionChange = (option) => {
+    setSelectedToggle(option);
+  };
+
   return (
     <div>
       <ProfileHeader />
@@ -38,22 +76,16 @@ function Dashboard() {
           </div>
         ))}
       </BoxMiddle>
-      <ProfileInfo />
 
-      <div>
-        <button onClick={() => handleOptionChange("profile")}>
-          Profile Info
-        </button>
-        <button onClick={() => handleOptionChange("friends")}>Friends</button>
-        <button onClick={() => handleOptionChange("leaderboard")}>
-          Leaderboard
-        </button>
-      </div>
-      {/* 
-      {selectedOption === "profile" && <ProfileInfo />}
-      {selectedOption === "friends" && <Friends />}
-      {selectedOption === "leaderboard" && <Leaderboard />} */}
+      <BoxTopRight>
+        <ProfileInfo />
 
+        <ProfileButtonsSection
+          healthMetricsSets={healthMetricsSets}
+          friends={friends}
+          leaders={leaders}
+        />
+      </BoxTopRight>
       <Achievements />
     </div>
   );
@@ -78,7 +110,7 @@ const BoxTopRight = styled(Box).attrs({
 })`
   position: absolute;
   width: 453px;
-  height: 270px;
+  height: 470px;
   background-color: #ffffff;
   left: 60%;
   right: 10%;

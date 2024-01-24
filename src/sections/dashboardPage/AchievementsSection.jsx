@@ -32,7 +32,7 @@ const AchievementsContainer = styled.div.attrs({
     //right: 0px;
     left: 63%;
     right: 10%;
-    top: 50%;
+    top: 70%;
     border-radius: 30px;
   
     //svg {

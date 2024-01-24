@@ -13,7 +13,7 @@ import ButtonsSection from "./ProfileButtonsSection";
 
 function ProfileInfo() {
   return (
-    <BoxTopRight>
+    <div>
       <div>
         <Ellipse>
           {" "}
@@ -26,8 +26,7 @@ function ProfileInfo() {
       </div>
       {/* Add friends,followers, routines stats */}
       <Line />
-      <ButtonsSection />
-    </BoxTopRight>
+    </div>
   );
 }
 export default ProfileInfo;
