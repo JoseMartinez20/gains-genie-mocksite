@@ -1,35 +1,37 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { NormalTextStyle , LargeTitleStyle } from "../../styles/postAuthStyles";
 import ExerciseTableRow from "./ExerciseTableRow";
 
 
-function ExercisePlan() {
+function ExercisePlan({ isEditing }) {
+    // const [isEditing, setIsEditing] = useState(false);
+
     return (
     <>
         <ExerciseContainer>
             <ExerciseTitle>Bicep Curls</ExerciseTitle>
             <TitleSeperator/>
-            <ExerciseTableRow/>
+            <ExerciseTableRow isEditing={false}/>
             {/* add title names above*/}
 
             <TableNameSeperator/>
 
-            <ExerciseTableRow/>
-            <ExerciseTableRow/>
+            <ExerciseTableRow isEditing={isEditing}/>
+            <ExerciseTableRow isEditing={isEditing}/>
         </ExerciseContainer>
 
-        <ExerciseContainer>
+        {/* <ExerciseContainer>
             <ExerciseTitle>Lateral Raises</ExerciseTitle>
             <TitleSeperator/>
             <ExerciseTableRow/> 
-            {/* add title names above*/}
 
             <TableNameSeperator/>
             
             <ExerciseTableRow/>
             <ExerciseTableRow/>
-        </ExerciseContainer>
+        </ExerciseContainer> */}
     </>
     )
 };

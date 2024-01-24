@@ -3,23 +3,26 @@ import { useState } from "react";
 import styled from "styled-components";
 import { NormalTextStyle } from "../../styles/postAuthStyles";
 import { ctaButton } from "../../components/routinesPage/ctaButton";
+//import NavBar from "../../pages/NavBar";
 
-function AllRoutinesList() {
+function AllRoutinesList({ handlerListItemClick }) {
     return(
-        <ListContainer>
-            <ListItemContainer>
-                <ListItemText>Arms Day</ListItemText>
-                <RecordButton>Record</RecordButton>
-            </ListItemContainer>
-            <ListItemContainer>
-                <ListItemText>Pull Day</ListItemText>
-                <RecordButton>Record</RecordButton>
-            </ListItemContainer>
-        </ListContainer>
+        <>
+            <ListContainer>
+                <ListItemContainer>
+                    {/* <ListItemText onClick={handleListItemClick}>Arms Day</ListItemText> */}
+                    <ListItemText onClick={handlerListItemClick}>Arms Day</ListItemText>
+                    <RecordButton>Record</RecordButton>
+                </ListItemContainer>
+                <ListItemContainer>
+                    <ListItemText onClick={handlerListItemClick}>Pull Day</ListItemText>
+                    <RecordButton>Record</RecordButton>
+                </ListItemContainer>
+            </ListContainer>
+        </>
     );
 }
-
-export default AllRoutinesList
+export default AllRoutinesList;
 
 const ListContainer = styled.div.attrs({
     className: "RoutinesListContainer",
@@ -38,16 +41,20 @@ const ListItemContainer = styled.div.attrs({ //add onClick property!
     flex-direction: row;
     height: 40px;
     width: 525px;
-    border-radius: 10px;
-    background-color: rgba(217, 217, 217, 0.5);
+    justify-content: space-between;
+    //background-color: rgba(217, 217, 217, 0.5);
 `
 const ListItemText = styled(NormalTextStyle).attrs({
     className: "Routines List Item Text",
 })`
     height: 40px;
-    width: 75%;
+    width: 74%;
     margin: 0 0 0 12px;
+    padding-left: 12px;
     align-items: center;
+    background-color: rgba(217, 217, 217, 0.5);
+    border-radius: 10px;
+    cursor: pointer; 
 `
 
 const RecordButton = styled(ctaButton).attrs({
@@ -56,5 +63,6 @@ const RecordButton = styled(ctaButton).attrs({
     width: 17%;
     height: 60%;
     margin-right: 17px;
-    position: static;
+    position: relative;
+    cursor: pointer; 
 `

@@ -1,28 +1,54 @@
 import React, { useEffect } from "react";
-//import { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { ctaButton } from "../components/routinesPage/ctaButton";
 import NavBar from "./NavBar";
 import ProfileHeader from "../sections/dashboardPage/ProfileHeader";
 import { LargeTitleStyle } from "../styles/postAuthStyles";
 import AllRoutinesList from "../sections/routinesPage/AllRoutinesList";
+import NewRoutinePage from "./New-Routine-Edit";
+import OneRoutineView from "./One-Routine-View";
 
-//Add logic on whether a routine is clicked, recoreded, or add new routine etc....
-function RoutinesPage() {
+function AllRoutinesPage() {//({onNewRoutineButtonClick}) {
+    const [view, setView] = useState("AllRoutines");
+
+    const handleNewRoutineButtonClick = () => {
+        setView("NewRoutine");
+    };
+
+    const handleListItemClick = () => {
+        // MAKE MORE SPECIFCI TO ROUTINES
+        setView("OneRoutineView")
+    };
     return (
         <>
             <ProfileHeader/>
             <NavBar/>
+
+            {view==="AllRoutines" && (
+            // HERE IS FULL LIST OF YOUR ROUTINES
             <RoutinesPageLeftContainer>
                 <Title>My Routines</Title>
-                <AllRoutinesList/>
-                <NewRoutineButton>+ New Routine</NewRoutineButton>
+                <AllRoutinesList handlerListItemClick={handleListItemClick}/>
+                <NewRoutineButton onClick={handleNewRoutineButtonClick}>+ New Routine</NewRoutineButton>
             </RoutinesPageLeftContainer>
+            )}
+
+            {view==="NewRoutine" && (
+            // HERE IS TO GO TO EDIT MODE TO CREATE A NEW ROUTINE
+            <NewRoutinePage />
+
+            )}
+            {view==="OneRoutineView" && (
+            // HERE IS THE TO GO TO ONE ROUTINE -- EDIT THIS TO BE MORE SPECIFIC TO ROUTINE
+            <OneRoutineView />
+            )}
+
         </>
     )
 };
 
-export default RoutinesPage
+export default AllRoutinesPage;
 
 export const RoutinesPageLeftContainer = styled.div.attrs({
     className: "Routines Container",
