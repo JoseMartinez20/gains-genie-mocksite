@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Dashboard from "./Dashboard";
+import Nutrition from "./Nutrition";
+import { Routes, Route } from "react-router-dom";
 import { auth, db } from "../config/firebase";
 import { doc, setDoc, getDoc, collection, addDoc } from "firebase/firestore"; // Use getDoc for a single document
 import OnboardingSectionContainer from "../components/onboarding/OnboardingSectionContainer";
+import RoutinesPage from "./All-Routines-Page";
 
 function OnboardingFlow() {
   const [hasOnboarded, setHasOnboarded] = useState(null);
@@ -85,8 +88,8 @@ function OnboardingFlow() {
 
   if (hasOnboarded) {
     return (
-      <div>
-        <Dashboard />
+      <div className="App">
+        <Dashboard/>
       </div>
     );
   } else {

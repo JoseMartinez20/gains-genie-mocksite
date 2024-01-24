@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { ctaButton } from "../components/routinesPage/ctaButton";
 import NavBar from "./NavBar";
+import ProfileHeader from "../sections/dashboardPage/ProfileHeader";
 import { LargeTitleStyle } from "../styles/postAuthStyles";
 import AllRoutinesList from "../sections/routinesPage/AllRoutinesList";
 
@@ -10,6 +11,7 @@ import AllRoutinesList from "../sections/routinesPage/AllRoutinesList";
 function RoutinesPage() {
     return (
         <>
+            <ProfileHeader/>
             <NavBar/>
             <RoutinesPageLeftContainer>
                 <Title>My Routines</Title>
@@ -25,7 +27,7 @@ export default RoutinesPage
 export const RoutinesPageLeftContainer = styled.div.attrs({
     className: "Routines Container",
   })`
-    display: inline-flex;
+    display: "flex";
     padding: 24px 0px;
     flex-direction: column;
     align-items: center;

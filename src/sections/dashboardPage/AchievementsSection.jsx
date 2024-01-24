@@ -25,31 +25,22 @@ export default Achievements;
 const AchievementsContainer = styled.div.attrs({
     className: "Achievements Container",
   })`
+    margin-top: 20%;
+    float: right;
+    order: 2;
     background-color: white;
     width: 453px;
     height: 336px;
-    position: absolute;
-    //right: 0px;
-    left: 63%;
-    right: 10%;
-    top: 70%;
     border-radius: 30px;
-  
-    //svg {
-    //  position: absolute;
-    //  bottom: 0; }
-    `;
+  `;
 
   const AchievementsGroup = styled.div.attrs({
     className: "Achievements Group",
   })`
-    display: flex;
-    flex-direction: column;
     align-items: center;
     margin: 15px 0px 0px 54px;
     width: 347px;
     height: 105.332px;
-    //text-align: center;
   `;
 
 
@@ -63,7 +54,7 @@ const Title = styled(TitleStyle).attrs({
 const Subtitle = styled(SubtitleStyle).attrs({
     className: "Achievements Subtitle",
   })`
-    margin: 0px 0px 0px 0px;
+    /* margin: 0px 0px 0px 0px; */
     //width: 220px;
   `;
   

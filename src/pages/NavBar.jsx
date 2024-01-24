@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import {Link} from "react-router-dom";
 import logoImage from "../assets/gym-genie-logo-smaller.png";
 import profileImage from "../assets/profile-icon.png";
 import historyImage from "../assets/history-icon.png";
@@ -24,7 +25,7 @@ function NavBar() {
           {" "}
           <img src={profileImage} />{" "}
         </SectionImage>
-        <SectionTitle> Dashboard </SectionTitle>
+        <SectionTitle> <Link to="/dashboard">Dashboard</Link> </SectionTitle>
       </SectionGroup>
       <SectionGroup>
         <SectionImage>
@@ -38,7 +39,7 @@ function NavBar() {
           {" "}
           <img src={routinesImage} />{" "}
         </SectionImage>
-        <SectionTitle> Routines </SectionTitle>
+        <SectionTitle> <Link to="/routines">Routines</Link> </SectionTitle>
       </SectionGroup>
       <SectionGroup>
         <SectionImage>
@@ -52,7 +53,7 @@ function NavBar() {
           {" "}
           <img src={nutritionImage} />{" "}
         </SectionImage>
-        <SectionTitle> Nutrition </SectionTitle>
+        <SectionTitle> <Link to="/nutrition">Nutrition</Link> </SectionTitle>
       </SectionGroup>
       <SectionGroup>
         <SectionImage>
@@ -68,13 +69,14 @@ function NavBar() {
 const Section = styled.div.attrs({
   className: "Section",
 })`
-  top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   height: 1265px;
   width: 219px;
   background-color: #ffffff;
-  left: 0;
-  position: absolute;
-  top: 7%;
+  /* left: 0; */
+  /* position: relative; */
   border-radius: 30px;
 `;
 
@@ -87,6 +89,7 @@ const SectionGroup = styled.div.attrs({
   display: flex;
   flex-direction: row;
   padding: 23px;
+  margin-left: 15px;
 `;
 
 const SectionImage = styled.div.attrs({
@@ -94,8 +97,6 @@ const SectionImage = styled.div.attrs({
 })`
   width: 28.4px;
   height: 29.61px;
-  position: "absolute";
-  display: inline-block;
   position: 50px;
 `;
 
@@ -109,8 +110,6 @@ const SectionTitle = styled.div.attrs({
   font-size: 16.92px;
   font-family: "Inter";
   font-weight: "400";
-  position: "absolute";
-  display: inline-block;
   margin-left: 10px;
 `;
 
@@ -125,7 +124,6 @@ const ProfileTitle = styled(SectionTitle).attrs({
   font-size: 21px; 
   font-family: Inter; 
   font-weight: 800;
-  display: "inline-block";
   margin-bottom: 30px;
 `;
 

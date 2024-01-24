@@ -49,12 +49,21 @@ const ChartComponent = ({ dataset }) => {
   }, []);
 
   return (
-    <div style={{ width: '50%', margin: '0 auto', display: 'block', padding: '50px', border: '20px'}}>
+    <GraphSection>
       <GraphLabel> {dataset.label} </GraphLabel>
-      <canvas id={`myChart-${dataset.id}`} width="400" height="200"></canvas>
-    </div>
+      <canvas id={`myChart-${dataset.id}`}></canvas>
+    </GraphSection>
   );
 };
+
+const GraphSection = styled.div.attrs({
+  className: "GraphSection",
+})`
+  margin: auto;
+  width: 400px;
+  height: 500px;
+  padding: 30px;
+`;
 
 const GraphLabel = styled.div.attrs({
   className: "GraphLabel",

@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import { Button } from "../sections/landingPage/HeroSection";
 import NavBar from "./NavBar";
-import ChartComponent from "./ChartComponent";
-import ProfileInfo from "../sections/dashboardPage/ProfileInfo";
-import { Box } from "../../src/styles/texStyles";
+import Profile from "../sections/dashboardPage/Profile";
 import ProfileHeader from "../sections/dashboardPage/ProfileHeader";
 import Achievements from "../sections/dashboardPage/AchievementsSection";
-import ProfileButtonsSection from "../sections/dashboardPage/ProfileButtonsSection";
+import Charts from "../sections/dashboardPage/Charts";
 
 function Dashboard() {
   const chartDataSets = [
@@ -59,69 +56,61 @@ function Dashboard() {
     },
   ];
 
-  const [selectedToggle, setSelectedToggle] = useState("profile");
-
-  const handleOptionChange = (option) => {
-    setSelectedToggle(option);
-  };
-
   return (
-    <div>
+    <DashboardDiv>
       <ProfileHeader />
-      <NavBar />
-      <BoxMiddle>
-        {chartDataSets.map((chartData) => (
-          <div>
-            <ChartComponent key={chartData.id} dataset={chartData} />
-          </div>
-        ))}
-      </BoxMiddle>
 
-      <BoxTopRight>
-        <ProfileInfo />
+      <DashboardMinusHeader>
+        <NavBar />
+          <ChartsProfileandAchievements>
+          <Charts chartDataSets={chartDataSets} />
 
-        <ProfileButtonsSection
-          healthMetricsSets={healthMetricsSets}
-          friends={friends}
-          leaders={leaders}
-        />
-      </BoxTopRight>
-      <Achievements />
-    </div>
+          <ProfileandAchievements>
+            <Profile
+              healthMetricsSets={healthMetricsSets}
+              friends={friends}
+              leaders={leaders}
+            />
+
+          <Achievements />
+        </ProfileandAchievements>
+        </ChartsProfileandAchievements>
+      </DashboardMinusHeader>
+    </DashboardDiv>
   );
 }
 export default Dashboard;
 
-const BoxMiddle = styled(Box).attrs({
-  className: "BoxMiddle",
+const DashboardDiv = styled.div.attrs({
+  className: "DashboardDiv",
 })`
-  position: absolute;
-  height: 1265px;
-  width: 500px;
-  background-color: #ffffff;
-  left: 20%;
-  right: 90%;
-  top: 7%;
-  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+  /* align-items: stretch; */
 `;
 
-const BoxTopRight = styled(Box).attrs({
-  className: "BoxTopRight",
+const DashboardMinusHeader = styled.div.attrs({
+  className: "DashboardMinusHeader",
 })`
-  position: absolute;
-  width: 453px;
-  height: 470px;
-  background-color: #ffffff;
-  left: 60%;
-  right: 10%;
-  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2%;
 `;
 
-const GraphLabel = styled.div.attrs({
-  className: "GraphLabel",
+const ChartsProfileandAchievements = styled.div.attrs({
+  className: "ChartsProfileandAchievements"
 })`
-  text-align: center;
-  font-size: 32px;
-  font-weight: bold;
-  font-style: italic;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+`;
+
+const ProfileandAchievements = styled.div.attrs({
+  className: "ProfileandAchievements"
+})`
+  display: flex;
+  flex-direction: column;
 `;
