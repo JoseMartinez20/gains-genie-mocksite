@@ -35,6 +35,9 @@ export const NormalTextStyle = styled.p`
   //letter-spacing: normal;
   //line-height: 150%;
   color: black;
+  display: flex; 
+  align-items: center; 
+
   //@media (max-width: 960px) {
   //  font-size: 16px;
   //}
