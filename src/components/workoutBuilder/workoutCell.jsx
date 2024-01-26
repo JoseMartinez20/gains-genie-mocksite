@@ -4,9 +4,7 @@ import styled from "styled-components";
 const WorkoutCell = ({ workout }) => {
   return (
     <WorkoutContainer>
-      <WorkoutHeader>
-        Workout on {workout.createdAt.toDateString()}
-      </WorkoutHeader>
+      <WorkoutHeader>{workout.name}</WorkoutHeader>
       <h4>Exercises:</h4>
       <ExerciseList>
         {workout.exercises.map((exercise, index) => (

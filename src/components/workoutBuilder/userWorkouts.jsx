@@ -30,6 +30,7 @@ function UserWorkouts() {
 
   return (
     <Container>
+      <Title>Saved Workouts</Title>
       {userWorkouts.map((workout) => (
         <WorkoutCell key={workout.id} workout={workout} />
       ))}
@@ -39,6 +40,8 @@ function UserWorkouts() {
 
 export default UserWorkouts;
 
-const Container = styled.div`
-  /* color: white; */
+const Container = styled.div``;
+
+const Title = styled.h1`
+  color: white;
 `;

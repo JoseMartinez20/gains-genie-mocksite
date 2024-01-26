@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import logoImage from "../assets/gym-genie-logo-smaller.png";
 import profileImage from "../assets/profile-icon.png";
 import historyImage from "../assets/history-icon.png";
@@ -16,7 +16,7 @@ function NavBar() {
       <SectionGroup>
         <ProfileImage>
           {" "}
-          <img src={logoImage} height="20" width="30"/>{" "}
+          <img src={logoImage} height="20" width="30" />{" "}
         </ProfileImage>
         <ProfileTitle> Gym Genie</ProfileTitle>
       </SectionGroup>
@@ -25,35 +25,48 @@ function NavBar() {
           {" "}
           <img src={profileImage} />{" "}
         </SectionImage>
-        <SectionTitle> <Link to="/dashboard">Dashboard</Link> </SectionTitle>
-      </SectionGroup>
-      <SectionGroup>
-        <SectionImage>
+        <SectionTitle>
           {" "}
-          <img src={historyImage} />{" "}
-        </SectionImage>
-        <SectionTitle> History </SectionTitle>
+          <Link to="/dashboard">Dashboard</Link>{" "}
+        </SectionTitle>
       </SectionGroup>
+      <Link to="/history">
+        <SectionGroup>
+          <SectionImage>
+            {" "}
+            <img src={historyImage} />{" "}
+          </SectionImage>
+          <SectionTitle> History </SectionTitle>
+        </SectionGroup>
+      </Link>
       <SectionGroup>
         <SectionImage>
           {" "}
           <img src={routinesImage} />{" "}
         </SectionImage>
-        <SectionTitle> <Link to="/routines">Routines</Link> </SectionTitle>
-      </SectionGroup>
-      <SectionGroup>
-        <SectionImage>
+        <SectionTitle>
           {" "}
-          <img src={exercisesImage} className="fit-image"/>{" "}
-        </SectionImage>
-        <SectionTitle> Exercise </SectionTitle>
+          <Link to="/routines">Routines</Link>{" "}
+        </SectionTitle>
       </SectionGroup>
+      <Link to="/exercise">
+        <SectionGroup>
+          <SectionImage>
+            {" "}
+            <img src={exercisesImage} className="fit-image" />{" "}
+          </SectionImage>
+          <SectionTitle> Exercise </SectionTitle>
+        </SectionGroup>
+      </Link>
       <SectionGroup>
         <SectionImage>
           {" "}
           <img src={nutritionImage} />{" "}
         </SectionImage>
-        <SectionTitle> <Link to="/nutrition">Nutrition</Link> </SectionTitle>
+        <SectionTitle>
+          {" "}
+          <Link to="/nutrition">Nutrition</Link>{" "}
+        </SectionTitle>
       </SectionGroup>
       <SectionGroup>
         <SectionImage>
@@ -116,13 +129,13 @@ const SectionTitle = styled.div.attrs({
 const ProfileTitle = styled(SectionTitle).attrs({
   className: "ProfileTitle",
 })`
-  width: 100px; 
-  height: 50px; 
+  width: 100px;
+  height: 50px;
   text-align: center;
-  top: 50%; 
-  color: #4572A7; 
-  font-size: 21px; 
-  font-family: Inter; 
+  top: 50%;
+  color: #4572a7;
+  font-size: 21px;
+  font-family: Inter;
   font-weight: 800;
   margin-bottom: 30px;
 `;
@@ -133,6 +146,5 @@ const ProfileImage = styled(SectionImage).attrs({
   max-width: 10%;
   margin-top: 10px;
 `;
-
 
 export default NavBar;

@@ -6,8 +6,10 @@ import Profile from "../sections/dashboardPage/Profile";
 import ProfileHeader from "../sections/dashboardPage/ProfileHeader";
 import Achievements from "../sections/dashboardPage/AchievementsSection";
 import Charts from "../sections/dashboardPage/Charts";
+import UserManager from "../config/userManager";
 
 function Dashboard() {
+  const userData = UserManager();
   const chartDataSets = [
     {
       id: 1,
@@ -25,8 +27,8 @@ function Dashboard() {
   ];
 
   const healthMetricsSets = [
-    ["Weight", 180],
-    ["Height", 72],
+    ["Weight", userData?.weight || "Default Weight"],
+    ["Height", userData?.height || "Default Height"],
     ["Calorie Intake", 2500],
   ];
 
@@ -62,7 +64,7 @@ function Dashboard() {
 
       <DashboardMinusHeader>
         <NavBar />
-          <ChartsProfileandAchievements>
+        <ChartsProfileandAchievements>
           <Charts chartDataSets={chartDataSets} />
 
           <ProfileandAchievements>
@@ -72,8 +74,8 @@ function Dashboard() {
               leaders={leaders}
             />
 
-          <Achievements />
-        </ProfileandAchievements>
+            <Achievements />
+          </ProfileandAchievements>
         </ChartsProfileandAchievements>
       </DashboardMinusHeader>
     </DashboardDiv>
@@ -101,7 +103,7 @@ const DashboardMinusHeader = styled.div.attrs({
 `;
 
 const ChartsProfileandAchievements = styled.div.attrs({
-  className: "ChartsProfileandAchievements"
+  className: "ChartsProfileandAchievements",
 })`
   display: flex;
   flex-direction: row;
@@ -109,7 +111,7 @@ const ChartsProfileandAchievements = styled.div.attrs({
 `;
 
 const ProfileandAchievements = styled.div.attrs({
-  className: "ProfileandAchievements"
+  className: "ProfileandAchievements",
 })`
   display: flex;
   flex-direction: column;
