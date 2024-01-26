@@ -20,7 +20,7 @@ function ProfileHeader() {
       <div>
         <div>
           <HeaderBox>
-            <Welcome>Welcome {auth.currentUser.displayName}</Welcome>
+            {/* <Welcome>Welcome {auth.currentUser.displayName}</Welcome> */}
             <LogOutButton2 onClick={logout} title="Log Out" />
           </HeaderBox>
         </div>

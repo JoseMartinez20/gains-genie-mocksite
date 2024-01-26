@@ -26,7 +26,7 @@ const AchievementsContainer = styled.div.attrs({
     className: "Achievements Container",
   })`
     margin-top: 20%;
-    float: right;
+    /* float: center; */
     order: 2;
     background-color: white;
     width: 453px;

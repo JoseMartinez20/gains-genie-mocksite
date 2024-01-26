@@ -22,7 +22,7 @@ const BoxMiddle = styled.div.attrs({
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 50%;
+  /* margin-right: 50%; */
   width: 2000px;
   height: 1000px;
   width: 50%;

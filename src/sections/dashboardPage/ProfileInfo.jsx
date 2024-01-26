@@ -21,8 +21,8 @@ function ProfileInfo() {
         </Ellipse>
       </div>
       <div>
-        <Name> {auth.currentUser.displayName} </Name>
-        <UserName>{auth.currentUser.email}</UserName>
+        {/* <Name> {auth.currentUser.displayName} </Name> */}
+        {/* <UserName>{auth.currentUser.email}</UserName> */}
       </div>
       {/* Add friends,followers, routines stats */}
       <Line />

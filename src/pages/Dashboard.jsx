@@ -64,19 +64,19 @@ function Dashboard() {
 
       <DashboardMinusHeader>
         <NavBar />
-        <ChartsProfileandAchievements>
-          <Charts chartDataSets={chartDataSets} />
+        {/* <ChartsProfileandAchievements> */}
+        <Charts chartDataSets={chartDataSets} />
 
-          <ProfileandAchievements>
-            <Profile
-              healthMetricsSets={healthMetricsSets}
-              friends={friends}
-              leaders={leaders}
-            />
+        <ProfileandAchievements>
+          <Profile
+            healthMetricsSets={healthMetricsSets}
+            friends={friends}
+            leaders={leaders}
+          />
 
-            <Achievements />
-          </ProfileandAchievements>
-        </ChartsProfileandAchievements>
+          <Achievements />
+        </ProfileandAchievements>
+        {/* </ChartsProfileandAchievements> */}
       </DashboardMinusHeader>
     </DashboardDiv>
   );
@@ -88,9 +88,6 @@ const DashboardDiv = styled.div.attrs({
 })`
   display: flex;
   flex-direction: column;
-  padding: 0px;
-  margin: 0px;
-  /* align-items: stretch; */
 `;
 
 const DashboardMinusHeader = styled.div.attrs({
@@ -99,15 +96,8 @@ const DashboardMinusHeader = styled.div.attrs({
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  max-width: 100%;
   margin-top: 2%;
-`;
-
-const ChartsProfileandAchievements = styled.div.attrs({
-  className: "ChartsProfileandAchievements",
-})`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
 `;
 
 const ProfileandAchievements = styled.div.attrs({

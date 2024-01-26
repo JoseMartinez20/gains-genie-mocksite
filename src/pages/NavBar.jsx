@@ -84,11 +84,11 @@ const Section = styled.div.attrs({
 })`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   height: 1265px;
-  width: 219px;
+  width: 319px;
   background-color: #ffffff;
-  /* left: 0; */
+  left: 0;
   /* position: relative; */
   border-radius: 30px;
 `;
@@ -102,7 +102,7 @@ const SectionGroup = styled.div.attrs({
   display: flex;
   flex-direction: row;
   padding: 23px;
-  margin-left: 15px;
+  /* margin-left: 15px; */
 `;
 
 const SectionImage = styled.div.attrs({
