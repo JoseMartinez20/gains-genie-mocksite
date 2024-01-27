@@ -18,7 +18,7 @@ function Nutrition() {
   const [calorieIntake, setCalorieIntake] = useState(0);
   const [calorieIntakeSubmitted, setCalorieIntakeSubmitted] =
     useState(calorieIntake);
-  const [foodItem, setFoodItem] = useState("");
+  const [foodItem, setFoodItem] = useState("'foodItem'");
   const [foodItemSubmitted, setFoodItemSubmitted] = useState(foodItem);
 
   const handleCalorieIntakeChange = (e) => {
@@ -128,26 +128,39 @@ function Nutrition() {
     <NutritionSection>
       <ProfileHeader />
       <NutritionMinusHeader>
-      <NavBar />
+        <NavBar />
         <TableWithSubmit>
-          <form>
-          <label>What type of food do you want to search?: </label>
-          <input type="text" value={foodItem} onChange={handleFoodItemChange} />
-          <button onClick={handleFoodItemSubmit}> Submit </button>
-          <br />
-          <br />
-          <label>How many calories do you eat in 1 day?: </label>
-          <input
-            type="number"
-            value={calorieIntake}
-            id="calorie_amount_input"
-            onChange={handleCalorieIntakeChange}
-          />
-          <button id="calorie_amount_button" onClick={handleCalorieIntakeSubmit}>
-            Submit
-          </button>
-        </form>
-        <NutritionTable props={props} />
+          <SearchPrompts>
+            <form>
+              <Search>
+                <label>What type of food do you want to search?: </label>
+                <input
+                  type="text"
+                  value={foodItem}
+                  onChange={handleFoodItemChange}
+                />
+                <button onClick={handleFoodItemSubmit}> Submit </button>
+                <br />
+              </Search>
+              <Search>
+                <br />
+                <label>How many calories do you eat in 1 day?: </label>
+                <input
+                  type="number"
+                  value={calorieIntake}
+                  id="calorie_amount_input"
+                  onChange={handleCalorieIntakeChange}
+                />
+                <button
+                  id="calorie_amount_button"
+                  onClick={handleCalorieIntakeSubmit}
+                >
+                  Submit
+                </button>
+              </Search>
+            </form>
+          </SearchPrompts>
+          <NutritionTable props={props} />
         </TableWithSubmit>
       </NutritionMinusHeader>
     </NutritionSection>
@@ -155,7 +168,7 @@ function Nutrition() {
 }
 
 const NutritionSection = styled.div.attrs({
-  className: 'NutritionSection'
+  className: "NutritionSection",
 })`
   display: flex;
   flex-direction: column;
@@ -179,5 +192,24 @@ const TableWithSubmit = styled.div.attrs({
   justify-content: flex-start;
 `;
 
+const SearchPrompts = styled.div.attrs({
+  className: "SearchPrompts",
+})`
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: 100%;
+  height: 10%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 30px;
+`;
+
+const Search = styled.div.attrs({
+  className: "Search",
+})`
+  text-align: center;
+`;
 
 export default Nutrition;
