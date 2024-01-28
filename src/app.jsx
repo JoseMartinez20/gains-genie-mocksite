@@ -6,6 +6,7 @@ import RoutinesPage from "./pages/All-Routines-Page";
 import Workout from "./pages/Workout-Page";
 import UserWorkoutSessions from "./components/workoutSessions/UserWorkoutSessions";
 import WorkoutBuilder from "./sections/workout/WorkoutBuilder";
+import HistoryPage from "./pages/History-Page";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         {/* <Route path="/routines" element={<RoutinesPage />} /> */}
         <Route path="/routines" element={<WorkoutBuilder />} />
         <Route path="/exercise" element={<Workout />} />
-        <Route path="/history" element={<UserWorkoutSessions />} />
+        {/* <Route path="/history" element={<UserWorkoutSessions />} /> */}
+        <Route path="/history" element={<HistoryPage />} />
       </Routes>
     </div>
   );
