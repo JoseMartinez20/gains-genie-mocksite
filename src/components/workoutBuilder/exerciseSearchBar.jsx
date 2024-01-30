@@ -141,7 +141,7 @@ const Container = styled.div.attrs({
   padding-top: 160px;
   text-align: center;
   width: 100%;
-  color: white;
+  color: black;
   @media (max-width: 480px) {
     padding-top: 120px;
   }
@@ -157,7 +157,9 @@ const SlideDownAnimation = styled.div`
     opacity: 1;
   }
 `;
-const HeroTitle = styled(SmallTitle)``;
+const HeroTitle = styled(SmallTitle)`
+  color: black;
+`;
 
 const FormContainer = styled.div.attrs({
   className: "Form Container",

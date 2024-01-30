@@ -40,8 +40,10 @@ function UserWorkouts() {
 
 export default UserWorkouts;
 
-const Container = styled.div``;
+const Container = styled.div`
+  color: black;
+`;
 
 const Title = styled.h1`
-  color: white;
+  color: black;
 `;

@@ -128,7 +128,6 @@ function Nutrition() {
     <NutritionSection>
       <ProfileHeader />
       <NutritionMinusHeader>
-        <NavBar />
         <TableWithSubmit>
           <SearchPrompts>
             <form>

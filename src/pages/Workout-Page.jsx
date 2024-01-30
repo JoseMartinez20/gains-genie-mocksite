@@ -176,5 +176,5 @@ function Workout() {
 export default Workout;
 
 const Container = styled.div`
-  color: white;
+  color: black;
 `;

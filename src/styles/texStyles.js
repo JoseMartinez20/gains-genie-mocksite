@@ -65,3 +65,24 @@ export const LargeTextStyle = styled.p`
     font-size: 20px;
   }
 `;
+
+export const NewVersionText = styled.p`
+  color: #1c1c1c;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+`;
+
+export const OverviewLargeText = styled.h2`
+  color: #1c1c1c;
+  font-size: 24px;
+`;
+
+export const OverviewSmallTitle = styled.p`
+  color: #1c1c1c;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+`;

@@ -68,13 +68,15 @@ function NavBar() {
           <Link to="/nutrition">Nutrition</Link>{" "}
         </SectionTitle>
       </SectionGroup>
-      <SectionGroup>
-        <SectionImage>
-          {" "}
-          <img src={settingsImage} />{" "}
-        </SectionImage>
-        <SectionTitle> Settings </SectionTitle>
-      </SectionGroup>
+      <Link to="/dashboardJose">
+        <SectionGroup>
+          <SectionImage>
+            {" "}
+            <img src={settingsImage} />{" "}
+          </SectionImage>
+          <SectionTitle> Settings </SectionTitle>
+        </SectionGroup>
+      </Link>
     </Section>
   );
 }

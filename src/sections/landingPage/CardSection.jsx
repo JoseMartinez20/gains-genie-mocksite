@@ -38,6 +38,7 @@ const Title = styled(TitleStyle).attrs({
     background: linear-gradient(120deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    -webkit-font-smoothing: antialiased;
   }
 `;
 

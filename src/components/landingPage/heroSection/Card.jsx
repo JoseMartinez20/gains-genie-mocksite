@@ -40,7 +40,7 @@ const CardContainer = styled.div.attrs({
     position: absolute;
     top: 0;
     height: 110%;
-    z-index: -1;
+    z-index: 1;
     transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
     filter: blur(2px);
   }
@@ -51,6 +51,7 @@ const Title = styled(SubtitleStyle).attrs({
 })`
   margin: 20px 0px 0px 20px;
   width: 220px;
+  z-index: 2;
 `;
 
 const Text = styled(NormalTextStyle).attrs({
@@ -60,4 +61,5 @@ const Text = styled(NormalTextStyle).attrs({
   font-weight: 600;
   align-self: end;
   margin: 0 0 20px 20px;
+  z-index: 3;
 `;

@@ -7,6 +7,7 @@ import { auth, db } from "../config/firebase";
 import { doc, setDoc, getDoc, collection, addDoc } from "firebase/firestore"; // Use getDoc for a single document
 import OnboardingSectionContainer from "../components/onboarding/OnboardingSectionContainer";
 import RoutinesPage from "./All-Routines-Page";
+import DashboardJose from "./newVersion/Dashboard-Jose";
 
 function OnboardingFlow() {
   const [hasOnboarded, setHasOnboarded] = useState(null);
@@ -86,10 +87,10 @@ function OnboardingFlow() {
     return <div>Loading...</div>;
   }
 
-  if (hasOnboarded) {
+  if (hasOnboarded && auth.currentUser) {
     return (
       <div className="App">
-        <Dashboard/>
+        <DashboardJose />
       </div>
     );
   } else {

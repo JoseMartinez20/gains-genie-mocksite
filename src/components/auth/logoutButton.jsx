@@ -40,5 +40,4 @@ const Button = styled.button.attrs({
   // Here
   cursor: pointer;
   transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-
 `;

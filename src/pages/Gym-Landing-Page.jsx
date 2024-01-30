@@ -17,8 +17,10 @@ function GymLandingPage() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+        console.log("user is logged in");
         setIsLoggedIn(true);
       } else {
+        console.log("user is not logged in");
         setIsLoggedIn(false);
       }
     });

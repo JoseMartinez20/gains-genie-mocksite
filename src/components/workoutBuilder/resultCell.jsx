@@ -22,7 +22,7 @@ const CellContainer = styled.div`
   border-radius: 8px;
   padding: 10px;
   margin: 10px;
-  background-color: white;
+  background-color: #f8f8f8;
   color: #333;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform ease 0.2s, box-shadow ease 0.2s;
