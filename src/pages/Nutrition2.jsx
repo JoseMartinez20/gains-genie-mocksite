@@ -5,19 +5,9 @@ import styled from "styled-components";
 import NavBar from "./NavBar.jsx";
 import NutritionTable from "../sections/nutritionPage/Table.jsx";
 import ProfileHeader from "../sections/dashboardPage/ProfileHeader.jsx";
-// import Auth from "../components/auth/auth.jsx";
+import Auth from "../components/auth/auth.jsx";
 import { db } from "../config/firebase.js";
-import {
-  getDocs,
-  collection,
-  addDoc,
-  deleteDoc,
-  doc,
-  query,
-  where,
-} from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import ConfettiJS from "./confetti.jsx";
+import { getDocs, collection, addDoc } from "firebase/firestore";
 
 function Nutrition() {
   const [editingMealIndex, setEditingMealIndex] = useState(-1);
@@ -70,30 +60,7 @@ function Nutrition() {
     useState(ingredientName);
   const [quantity, setQuantity] = useState(1);
   const [quantitySubmitted, setQuantitySubmitted] = useState(quantity);
-
-  const auth = getAuth();
-  const user = auth.currentUser;
   const mealsCollectionRef = collection(db, "meals");
-
-  // State to track if the auth state is still loading.
-  const [isAuthLoading, setIsAuthLoading] = useState(true);
-
-  useEffect(() => {
-    // Listen for auth state changes and manage loading state
-    const unsubscribe = onAuthStateChanged(auth,
-      (currentUser) => {
-      if (currentUser) {
-        console.log("User is signed in:", currentUser.uid);
-        getMealsList(currentUser.uid); // Call getMealsList here with the user UID
-      } else {
-        console.log("User is signed out");
-      }
-      setIsAuthLoading(false); // Move this inside to ensure it's set after checking auth
-    });
-
-    // Return unsubscribe function to call on cleanup
-    return () => unsubscribe();
-  }, []); // Ensure this runs only once on component mount
 
   const handleMealNameChange = (e) => {
     e.preventDefault();
@@ -148,37 +115,30 @@ function Nutrition() {
     setTotalAllMealsCalories(totalCalories);
   }, [mealsList]);
 
-  // Fetch meals specific to the logged-in user
-  const getMealsList = async () => {
-      const querySnapshot = await getDocs(
-        query(mealsCollectionRef, where("userId", "==", user.uid))
-      );
-      setMealsList(
-        querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
-  };
-
-  // }, [user, isAuthLoading]); // Depend on user and isAuthLoading state
-
-  const deleteMealFromFirestore = async (mealId) => {
-    const mealDocRef = doc(db, "meals", mealId);
-    await deleteDoc(mealDocRef);
-  };
+  useEffect(() => {
+    const getMealsList = async () => {
+      try {
+        const data = await getDocs(mealsCollectionRef);
+        const filteredMeals = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setMealsList(filteredMeals);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getMealsList();
+  }, []);
 
   const deleteIngredient = useCallback(
-    async (item) => {
-      // Perform the async operation first
-      if (editingMealIndex !== -1 && ingredientsList.length === 1) {
-        await deleteMealFromFirestore(mealsList[editingMealIndex].id);
-      }
-
-      // Then update the state
+    (item) => {
       setIngredientsList((currentIngredientsList) => {
         const updatedList = currentIngredientsList.filter(
           (ingredient) => ingredient.id !== item.id
         );
 
-        // If all ingredients are removed, reset the meal
+        // If editing and all ingredients are removed, reset the meal
         if (editingMealIndex !== -1 && updatedList.length === 0) {
           // Remove the meal from the meals list
           setMealsList((currentMealsList) =>
@@ -186,6 +146,7 @@ function Nutrition() {
           );
           // Reset editing index and meal name
           setEditingMealIndex(-1);
+          setIngredientsList([]);
           setMealName("");
           setIsMealNameConfirmed(false);
         }
@@ -205,7 +166,6 @@ function Nutrition() {
       totalMealCarbs,
       totalMealFats,
       totalMealProtein,
-      editingMealIndex,
     ]
   );
 
@@ -260,56 +220,22 @@ function Nutrition() {
   };
 
   const addToRecord = useCallback(
-    async (e) => {
+    (e) => {
       e.preventDefault();
-
-      if (!user || isAuthLoading) {
-        alert("No user logged in or auth state is still loading.");
-        return;
-      }
-
-      let filteredMealsList = mealsList.filter(
-        (item) => item.name === mealName
-      );
-
-      if (filteredMealsList.length > 0 && mealName !== "") {
-        alert("Please choose a new name!");
-        return;
-      }
-
-      const meal = {
-        name: mealName,
-        ingredients: ingredientsList,
-        totalCalories: totalMealCalories,
-        totalCarbs: totalMealCarbs,
-        totalFat: totalMealFats,
-        totalProtein: totalMealProtein,
-      };
-
-      if (editingMealIndex === -1) {
-        // Adding a new meal
-        const docRef = await addDoc(mealsCollectionRef, {
-          ...meal,
-          userId: user?.uid,
-          timestamp: new Date(),
-        });
-        setMealsList([...mealsList, { ...meal, id: docRef.id }]);
-        console.log("Meals List", mealsList);
-      } else {
-        // Updating an existing meal
-        const mealToUpdate = mealsList[editingMealIndex];
-        const mealDocRef = doc(db, "meals", mealToUpdate.id);
-        await updateDoc(mealDocRef, meal);
-        setMealsList(
-          mealsList.map((m, index) =>
-            index === editingMealIndex ? { ...meal, id: mealToUpdate.id } : m
-          )
-        );
-      }
-
-      // Reset form
+      setMealsList([
+        ...mealsList,
+        {
+          id: uuidv4(),
+          name: mealName,
+          ingredients: ingredientsList,
+          totalCalories: totalMealCalories,
+          totalCarbs: totalMealCarbs,
+          totalFat: totalMealFats,
+          totalProtein: totalMealProtein,
+        },
+      ]);
+      // setMealsList(currentMealsList => [...currentMealsList, newMeal]);
       setIngredientsList([]);
-      setEditingMealIndex(-1);
       setMealName("");
       setIsMealNameConfirmed(false);
       setTotalMealProtein(0);
@@ -318,18 +244,13 @@ function Nutrition() {
       setTotalMealFats(0);
     },
     [
-      mealsList,
       mealName,
       ingredientsList,
-      totalMealCalories,
-      totalMealCarbs,
-      totalMealFats,
+      mealsList,
       totalMealProtein,
-      editingMealIndex,
-      user?.uid,
-      mealsCollectionRef,
-      user,
-      isAuthLoading,
+      totalMealCarbs,
+      totalMealCalories,
+      totalMealFats,
     ]
   );
 
@@ -494,6 +415,7 @@ function Nutrition() {
     <NutritionSection>
       <ProfileHeader />
       <NutritionMinusHeader>
+        <NavBar />
         <TableWithSubmit>
           <QuestionPrompt>
             <CalorieQuestion>
@@ -541,6 +463,12 @@ function Nutrition() {
                   placeholder="1"
                   onChange={handleQuantityChange}
                 />
+                {/* <input
+                  id="submitQuantity"
+                  type="submit"
+                  style={{ display: "none" }}
+                  onClick={handleQuantitySubmit}
+                /> */}
               </form>
             </QuantityInput>
           </QuantityPrompt>
@@ -660,19 +588,6 @@ function Nutrition() {
           {!isAddingMeal && !isEditingMeal && <AddMealButton/>}
           {/* <MealRecord/> */}
         {/* </MealSection> */}
-        <h1 style={{ color: "blue" }}> Total Calories Across Meals: {totalAllMealsCalories} </h1>
-        <br/>
-        {totalAllMealsCalories >= calorieIntake ? (
-          <div>
-            <h1 style={{ color: "red" }}> Congrats </h1>
-            <ConfettiJS />
-          </div>
-        ) : (
-          <div>
-            <h1 style={{ color: "red" }}>   Still have work to do to hit your goal! </h1>
-          </div>
-        )}
-        ;
       </NutritionMinusHeader>
     </NutritionSection>
   );
