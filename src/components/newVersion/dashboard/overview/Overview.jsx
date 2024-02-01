@@ -4,14 +4,21 @@ import TopSection from "./topSection";
 import ChartSection from "./chartSection";
 import PrSection from "./prSection";
 import MacrosProgress from "./macrosChart";
+import UserManager from "../../../../config/userManager";
 
 function Overview() {
+  const userData = UserManager();
+
   return (
     <Container>
       <TopSection />
       <MiddleSectionContainer>
         <ChartSection />
-        <PrSection />
+        <PrSection
+          bench={userData?.benchPR || "280"}
+          squat={userData?.squatPR || "280"}
+          deadlift={userData?.deadliftPR || "280"}
+        />
       </MiddleSectionContainer>
       <MacrosProgress />
     </Container>

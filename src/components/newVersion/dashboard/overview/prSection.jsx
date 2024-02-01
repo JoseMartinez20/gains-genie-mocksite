@@ -6,37 +6,30 @@ import {
 } from "../../../../styles/texStyles";
 import prIcon from "../../../../assets/trophy-icon.png";
 
-const prs = [
-  {
-    name: "Bench Press",
-    value: "215 lbs",
-  },
-  {
-    name: "Back Squat",
-    value: "255 lbs",
-  },
-  {
-    name: "Deadlift",
-    value: "285 lbs",
-  },
-];
-
-function PrSection() {
+function PrSection({ bench, squat, deadlift }) {
   return (
     <Container>
       <Title>Personal Records</Title>
-      {prs.map((pr, index) => (
-        <ContentContainer>
-          <Icon src={prIcon} />
-          <Text>{pr.name}</Text>
-          <Text>- {pr.value}</Text>
-        </ContentContainer>
-      ))}
+      <ContentContainer>
+        <Icon src={prIcon} />
+        <Text>"Bench Press"</Text>
+        <Text>- {bench}</Text>
+      </ContentContainer>
+      <ContentContainer>
+        <Icon src={prIcon} />
+        <Text>"Back Squat"</Text>
+        <Text>- {squat}</Text>
+      </ContentContainer>
+      <ContentContainer>
+        <Icon src={prIcon} />
+        <Text>"Deadlift"</Text>
+        <Text>- {deadlift}</Text>
+      </ContentContainer>
       <Title>Misc</Title>
       <ContentContainer>
         <Icon src={prIcon} />
-        <Text>Highest Streak - </Text>
-        <Text>9</Text>
+        <Text>Total PRs - </Text>
+        <Text>3</Text>
       </ContentContainer>
     </Container>
   );

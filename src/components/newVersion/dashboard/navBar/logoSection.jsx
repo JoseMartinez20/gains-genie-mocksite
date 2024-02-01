@@ -5,8 +5,8 @@ import logo from "../../../../assets/gym-genie-logo-smaller.png";
 function LogoSection() {
   return (
     <Container>
-      <Logo src={logo} />
       <Name>Gym Genie</Name>
+      <Logo src={logo} />
     </Container>
   );
 }

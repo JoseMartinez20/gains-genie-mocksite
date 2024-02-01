@@ -1,40 +1,17 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { db, auth } from "../../../../config/firebase";
+import styled from "styled-components";
 
-// Doughnut chart data and goals for the macros
-const macrosData = {
-  labels: ["Protein", "Carbs", "Fats"],
-  datasets: [
-    {
-      data: [180, 150, 70], // These are the current intake values
-      backgroundColor: [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 205, 86)",
-      ],
-      hoverOffset: 4,
-    },
-  ],
-};
+Chart.register(ArcElement, Tooltip, Legend);
 
 const macroGoals = {
   Protein: 220,
   Carbs: 192,
   Fats: 61,
 };
-
-// Doughnut chart options
-const doughnutOptions = {
-  plugins: {
-    legend: {
-      display: false,
-    },
-  },
-  cutout: "80%",
-};
-
-// Styled components here...
 
 // Component to render each macro line progress
 const MacroLine = ({ macro, value, goal, color }) => {
@@ -49,15 +26,115 @@ const MacroLine = ({ macro, value, goal, color }) => {
           style={{ width: `${safePercentage}%`, backgroundColor: color }}
         />
       </ProgressBar>
-      <MacroValue>{`${value} / ${goal} g`}</MacroValue>
+      <MacroValue>{`${value.toFixed(2)} / ${goal} g`}</MacroValue>
     </MacroLineContainer>
   );
 };
 
 const MacrosProgress = () => {
-  const userMacros = macrosData.datasets[0].data;
-  const macroLabels = macrosData.labels;
-  const macroColors = macrosData.datasets[0].backgroundColor; // Colors from the dataset
+  const [macroIntakes, setMacroIntakes] = useState({
+    Protein: 0,
+    Carbs: 0,
+    Fats: 0,
+  });
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        const startOfDay = new Date();
+        startOfDay.setHours(0, 0, 0, 0); // Sets to the start of the current day
+
+        const endOfDay = new Date(startOfDay);
+        endOfDay.setDate(endOfDay.getDate() + 1); // Sets to the start of the next day
+
+        const mealsRef = collection(db, "meals");
+        const q = query(
+          mealsRef,
+          where("userId", "==", user.uid),
+          where("timestamp", ">=", startOfDay),
+          where("timestamp", "<", endOfDay)
+        );
+
+        let totalProtein = 0,
+          totalCarbs = 0,
+          totalFats = 0;
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          const meal = doc.data();
+          totalProtein += meal.totalProtein;
+          totalCarbs += meal.totalCarbs;
+          totalFats += meal.totalFat;
+        });
+
+        console.log("Total Protein:", totalProtein);
+        console.log("Total Carbs:", totalCarbs);
+        console.log("Total Fats:", totalFats);
+
+        setMacroIntakes({
+          Protein: totalProtein,
+          Carbs: totalCarbs,
+          Fats: totalFats,
+        });
+      }
+    };
+
+    fetchMeals();
+  }, []);
+
+  const userMacros = [
+    macroIntakes.Protein,
+    macroIntakes.Carbs,
+    macroIntakes.Fats,
+  ];
+
+  const totalMacros = userMacros.reduce((a, b) => a + b, 0);
+
+  const doughnutOptions = {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const label = context.label;
+            const value = context.raw;
+            const percentage = totalMacros
+              ? ((value / totalMacros) * 100).toFixed(2)
+              : 0;
+            return `${label}: ${percentage}%`;
+          },
+        },
+      },
+      legend: { display: false },
+    },
+    cutout: "70%",
+  };
+
+  const macroLabels = ["Protein", "Carbs", "Fats"];
+  const macroColors = [
+    "rgb(255, 99, 132)",
+    "rgb(54, 162, 235)",
+    "rgb(255, 205, 86)",
+  ];
+
+  const macrosData = {
+    labels: macroLabels,
+    datasets: [
+      {
+        data: userMacros,
+        backgroundColor: macroColors,
+        hoverOffset: 10,
+      },
+    ],
+  };
+
+  // Check for no meals
+  if (totalMacros === 0) {
+    return (
+      <Container>
+        <NoMealsMessage>No meals recorded for today.</NoMealsMessage>
+      </Container>
+    );
+  }
 
   return (
     <Container>
@@ -141,4 +218,10 @@ const Progress = styled.div`
 const MacroValue = styled.span`
   /* width: 20%; */
   text-align: right;
+`;
+
+const NoMealsMessage = styled.div`
+  // Your styling for the message
+  padding: 20px;
+  text-align: center;
 `;

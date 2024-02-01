@@ -36,7 +36,7 @@ function GymLandingPage() {
   } else {
     return (
       <div>
-        <Header />
+        {/* <Header /> */}
         <HeroSection />
         <CardSection />
         <WhySection />

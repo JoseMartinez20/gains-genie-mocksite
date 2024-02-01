@@ -24,7 +24,15 @@ function ExerciseSearchBar() {
     setWorkout([...workout, exercise]);
   };
 
+  const canSaveWorkout = () => {
+    return workoutName.trim();
+  };
+
   const saveWorkout = async () => {
+    if (!canSaveWorkout()) {
+      alert("Please choose a name for your workout");
+      return; // Prevent going to the next step
+    }
     // Ensure there is a logged-in user
     const user = auth.currentUser;
     if (user) {
@@ -44,6 +52,7 @@ function ExerciseSearchBar() {
     } else {
       console.log("No user logged in");
     }
+    window.location.reload();
   };
 
   useEffect(() => {

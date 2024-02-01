@@ -8,7 +8,6 @@ import historyIcon from "../../../../assets/history-icon.png";
 import nutritionIcon from "../../../../assets/nutrition-icon.png";
 import routinesIcon from "../../../../assets/routine-icon.png";
 import exerciseIcon from "../../../../assets/exercise-icon.png";
-import settingsIcon from "../../../../assets/settings-icon.png";
 
 const tabs = [
   {
@@ -35,12 +34,6 @@ const tabs = [
     icon: nutritionIcon,
     chevron: chevron,
     link: "/nutrition",
-  },
-  {
-    title: "Settings",
-    icon: settingsIcon,
-    chevron: chevron,
-    link: "/dashboardJose",
   },
 ];
 

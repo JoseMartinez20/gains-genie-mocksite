@@ -31,8 +31,8 @@ function NewNavBar() {
         <PagesSection />
       </NavSectionContainer>
       <BottomSectionContainer>
-        <LogOutButton onClick={logout}>Logout</LogOutButton>
         <LogoSection />
+        <LogOutButton onClick={logout}>Logout</LogOutButton>
       </BottomSectionContainer>
     </NavBarContainer>
   );

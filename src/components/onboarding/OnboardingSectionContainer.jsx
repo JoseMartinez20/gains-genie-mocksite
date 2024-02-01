@@ -15,7 +15,7 @@ function OnboardingSectionContainer({
       {title && <Title>{title}</Title>}
       {text && <Text>{text}</Text>}
       {children}
-      <Button onClick={onClick}>{buttonTitle}</Button>
+      <OnboardingButton onClick={onClick}>{buttonTitle}</OnboardingButton>
     </ContainerWrapper>
   );
 }
@@ -41,4 +41,9 @@ const Title = styled(SmallTitle)`
 
 const Text = styled(NormalTextStyle)`
   // Styling for the text
+  font-weight: 800;
+`;
+
+const OnboardingButton = styled(Button)`
+  animation: none;
 `;
