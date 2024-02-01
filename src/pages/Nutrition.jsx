@@ -18,6 +18,7 @@ import {
 } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import ConfettiJS from "./confetti.jsx";
+import { Button } from "../sections/landingPage/HeroSection.jsx";
 
 function Nutrition() {
   const [editingMealIndex, setEditingMealIndex] = useState(-1);
@@ -80,8 +81,7 @@ function Nutrition() {
 
   useEffect(() => {
     // Listen for auth state changes and manage loading state
-    const unsubscribe = onAuthStateChanged(auth,
-      (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         console.log("User is signed in:", currentUser.uid);
         getMealsList(currentUser.uid); // Call getMealsList here with the user UID
@@ -150,12 +150,12 @@ function Nutrition() {
 
   // Fetch meals specific to the logged-in user
   const getMealsList = async () => {
-      const querySnapshot = await getDocs(
-        query(mealsCollectionRef, where("userId", "==", user.uid))
-      );
-      setMealsList(
-        querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
+    const querySnapshot = await getDocs(
+      query(mealsCollectionRef, where("userId", "==", user.uid))
+    );
+    setMealsList(
+      querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    );
   };
 
   // }, [user, isAuthLoading]); // Depend on user and isAuthLoading state
@@ -492,7 +492,7 @@ function Nutrition() {
 
   return (
     <NutritionSection>
-      <ProfileHeader />
+      {/* <ProfileHeader /> */}
       <NutritionMinusHeader>
         <TableWithSubmit>
           <QuestionPrompt>
@@ -555,10 +555,12 @@ function Nutrition() {
                   placeholder="Type Food Name..."
                   onChange={handleMealNameChange}
                 />
-                <SubmitMealName
+                <NutritionButton
                   placeholder="Submit"
                   onClick={() => setIsMealNameConfirmed(true)}
-                />
+                >
+                  Submit
+                </NutritionButton>
               </MealNameNotConfirmed>
             )}
 
@@ -660,19 +662,6 @@ function Nutrition() {
           {!isAddingMeal && !isEditingMeal && <AddMealButton/>}
           {/* <MealRecord/> */}
         {/* </MealSection> */}
-        <h1 style={{ color: "blue" }}> Total Calories Across Meals: {totalAllMealsCalories} </h1>
-        <br/>
-        {totalAllMealsCalories >= calorieIntake ? (
-          <div>
-            <h1 style={{ color: "red" }}> Congrats </h1>
-            <ConfettiJS />
-          </div>
-        ) : (
-          <div>
-            <h1 style={{ color: "red" }}>   Still have work to do to hit your goal! </h1>
-          </div>
-        )}
-        ;
       </NutritionMinusHeader>
     </NutritionSection>
   );
@@ -939,3 +928,7 @@ const Record = styled("div")({
   left: `0px`,
   top: `2px`,
 });
+
+const NutritionButton = styled(Button)`
+  animation: none;
+`;

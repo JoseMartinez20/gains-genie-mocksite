@@ -13,7 +13,13 @@ const Section = (props) => (
     </WaveBottom>
     <SectionTitleGroup>
       <Title>{props.title}</Title>
-      <SectionText>{props.text}</SectionText>
+      <SectionText>
+        {props.text1}
+        <br />
+        {props.text2}
+        <br />
+        {props.text3}
+      </SectionText>
     </SectionTitleGroup>
   </SectionContainer>
 );

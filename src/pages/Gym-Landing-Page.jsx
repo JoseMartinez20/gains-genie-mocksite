@@ -45,7 +45,9 @@ function GymLandingPage() {
           image={gymImage}
           logo={logoImage}
           title="Contact Us"
-          text={"Here I will put contact info"}
+          text1={"jose.martinez102001@gmail.com"}
+          text2={"rj5604@gmail.com"}
+          text3={"jimenez.jessica132@gmail.com"}
         />
       </div>
     );

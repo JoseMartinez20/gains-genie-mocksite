@@ -2,15 +2,25 @@ import React from "react";
 import styled from "styled-components";
 import { TitleStyle, SmallTitle } from "../../styles/texStyles";
 import { Button } from "./HeroSection";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../../config/firebase";
 
 function JoinSection() {
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <Container>
       <Title>
         Join The <span>Community</span>
       </Title>
       <Text>Thousands of gym goers have already joined Gym Genie</Text>
-      <Button> Get started</Button>
+      <Button onClick={signInWithGoogle}> Get Started</Button>
     </Container>
   );
 }
